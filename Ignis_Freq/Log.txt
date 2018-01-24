@@ -1,0 +1,23 @@
+﻿17/01/2018
+------------------------------------------------------------------------------------------------------
+- updateTotalFreq function added																	 -
+- This function updates the logarithm calculations for Total Frequency,  Gold-Logarithm				 -
+- and Stat-Logarithm																				 -
+-																									 -
+- UpdateWSP function added																			 -
+- This function updated total logarithm calculations for Total Frequency, Gold-Logarithm			 -
+- and Stat-Logarithm																				 -
+-																									 -
+- Second Function also contains calculation to get the total number of sta/hp 251 stats				 -
+- (To do next, finish the UpdateWSP function)														 -
+-																									 -
+------------------------------------------------------------------------------------------------------
+
+18/01/2018
+------------------------------------------------------------------------------------------------------
+- UpdateWSP function edited																			 -
+- Added SQL querry to calculate total rank for sta/hp 251 stat										 -
+-																									 -
+- Calculate_StaHp251_Rank function added															 -
+- This function calculate the rank for each person who needs sta/hp 251 stat						 -
+------------------------------------------------------------------------------------------------------
