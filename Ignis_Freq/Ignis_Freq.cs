@@ -2798,7 +2798,7 @@ namespace Ignis_Freq
                         string[] Champions = { "Suguru" };
                         string[] Rouges = { "Andrzej", "Andrzejm", "Blusia", "Blumaba", "Ferno", "Ferniacz", "Hennio", "Henio", "Seven", "Seventhsin", "Syla", "Vaxin" };
                         string[] Scouts = { "Firuze", "Mijawian" };
-                        string[] Warlocks = { "Hexu", "Hexen", "Hexenmeister" };
+                        string[] Warlocks = { "Hexu", "Hexen", "Hexenmeister", "Czarnuszka" };
                         string[] Mages = { "Deru", "Dersuv", "Hola", "Holiusz", "Keit", "Keithelor", "Chaos", "Lunacy", "Lunek", "Owsiak", "Owsiakus", "Prokto", "Proktolog", "Scari", "Stormmen" };
                         #endregion
 
@@ -4396,7 +4396,7 @@ namespace Ignis_Freq
                 chk_Fourth1.Enabled = true;
                 chk_Fifth1.Enabled = true;
 
-                chk_Full1.ForeColor = Color.Black;
+                chk_Full1.ForeColor = Color.White;
             }
         }
         //When checkbox full for player 2 is checked, disable other checkboxes for player 2, else enable the rest of the checkboxes
@@ -4426,7 +4426,7 @@ namespace Ignis_Freq
                 chk_Fourth2.Enabled = true;
                 chk_Fifth2.Enabled = true;
 
-                chk_Full2.ForeColor = Color.Black;
+                chk_Full2.ForeColor = Color.White;
             }
         }
         //When checkbox full for player 3 is checked, disable other checkboxes for player 3, else enable the rest of the checkboxes
@@ -4456,7 +4456,7 @@ namespace Ignis_Freq
                 chk_Fourth3.Enabled = true;
                 chk_Fifth3.Enabled = true;
 
-                chk_Full3.ForeColor = Color.Black;
+                chk_Full3.ForeColor = Color.White;
             }
         }
         //When checkbox full for player 4 is checked, disable other checkboxes for player 4, else enable the rest of the checkboxes
@@ -4486,7 +4486,7 @@ namespace Ignis_Freq
                 chk_Fourth4.Enabled = true;
                 chk_Fifth4.Enabled = true;
 
-                chk_Full4.ForeColor = Color.Black;
+                chk_Full4.ForeColor = Color.White;
             }
         }
         //When checkbox full for player 5 is checked, disable other checkboxes for player 5, else enable the rest of the checkboxes
@@ -4516,7 +4516,7 @@ namespace Ignis_Freq
                 chk_Fourth5.Enabled = true;
                 chk_Fifth5.Enabled = true;
 
-                chk_Full5.ForeColor = Color.Black;
+                chk_Full5.ForeColor = Color.White;
             }
         }
         //When checkbox full for player 6 is checked, disable other checkboxes for player 6, else enable the rest of the checkboxes
@@ -4546,7 +4546,7 @@ namespace Ignis_Freq
                 chk_Fourth6.Enabled = true;
                 chk_Fifth6.Enabled = true;
 
-                chk_Full6.ForeColor = Color.Black;
+                chk_Full6.ForeColor = Color.White;
             }
         }
         //When checkbox full for player 7 is checked, disable other checkboxes for player 7, else enable the rest of the checkboxes
@@ -4576,7 +4576,7 @@ namespace Ignis_Freq
                 chk_Fourth7.Enabled = true;
                 chk_Fifth7.Enabled = true;
 
-                chk_Full7.ForeColor = Color.Black;
+                chk_Full7.ForeColor = Color.White;
             }
         }
         //When checkbox full for player 8 is checked, disable other checkboxes for player 8, else enable the rest of the checkboxes
@@ -4606,7 +4606,7 @@ namespace Ignis_Freq
                 chk_Fourth8.Enabled = true;
                 chk_Fifth8.Enabled = true;
 
-                chk_Full8.ForeColor = Color.Black;
+                chk_Full8.ForeColor = Color.White;
             }
         }
         //When checkbox full for player 9 is checked, disable other checkboxes for player 9, else enable the rest of the checkboxes
@@ -4636,7 +4636,7 @@ namespace Ignis_Freq
                 chk_Fourth9.Enabled = true;
                 chk_Fifth9.Enabled = true;
 
-                chk_Full9.ForeColor = Color.Black;
+                chk_Full9.ForeColor = Color.White;
             }
         }
         //When checkbox full for player 10 is checked, disable other checkboxes for player 10, else enable the rest of the checkboxes
@@ -4666,7 +4666,7 @@ namespace Ignis_Freq
                 chk_Fourth10.Enabled = true;
                 chk_Fifth10.Enabled = true;
 
-                chk_Full10.ForeColor = Color.Black;
+                chk_Full10.ForeColor = Color.White;
             }
         }
         //When checkbox full for player 11 is checked, disable other checkboxes for player 11, else enable the rest of the checkboxes
@@ -4696,7 +4696,7 @@ namespace Ignis_Freq
                 chk_Fourth11.Enabled = true;
                 chk_Fifth11.Enabled = true;
 
-                chk_Full11.ForeColor = Color.Black;
+                chk_Full11.ForeColor = Color.White;
             }
         }
         //When checkbox full for player 12 is checked, disable other checkboxes for player 12, else enable the rest of the checkboxes
@@ -4726,7 +4726,7 @@ namespace Ignis_Freq
                 chk_Fourth12.Enabled = true;
                 chk_Fifth12.Enabled = true;
 
-                chk_Full12.ForeColor = Color.Black;
+                chk_Full12.ForeColor = Color.White;
             }
         }
         //When checkbox "Reserves" is check show the reserve panel, else hide it
@@ -4860,7 +4860,7 @@ namespace Ignis_Freq
                 chk_FourthR1.Enabled = true;
                 chk_FifthR1.Enabled = true;
 
-                chk_FullR1.ForeColor = Color.Black;
+                chk_FullR1.ForeColor = Color.White;
             }
         }
         //When checkbox full for reserve player 2 is checked, disable other checkboxes for player reserve 2, else enable the rest of the checkboxes
@@ -4890,7 +4890,7 @@ namespace Ignis_Freq
                 chk_FourthR2.Enabled = true;
                 chk_FifthR2.Enabled = true;
 
-                chk_FullR2.ForeColor = Color.Black;
+                chk_FullR2.ForeColor = Color.White;
             }
         }
         //When checkbox full for reserve player 3 is checked, disable other checkboxes for player reserve 3, else enable the rest of the checkboxes
@@ -4920,7 +4920,7 @@ namespace Ignis_Freq
                 chk_FourthR3.Enabled = true;
                 chk_FifthR3.Enabled = true;
 
-                chk_FullR3.ForeColor = Color.Black;
+                chk_FullR3.ForeColor = Color.White;
             }
         }
         //When checkbox full for reserve player 4 is checked, disable other checkboxes for player reserve 4, else enable the rest of the checkboxes
@@ -4950,7 +4950,7 @@ namespace Ignis_Freq
                 chk_FourthR4.Enabled = true;
                 chk_FifthR4.Enabled = true;
 
-                chk_FullR4.ForeColor = Color.Black;
+                chk_FullR4.ForeColor = Color.White;
             }
         }
         //When checkbox full for reserve player 5 is checked, disable other checkboxes for player reserve 5, else enable the rest of the checkboxes
@@ -4980,7 +4980,7 @@ namespace Ignis_Freq
                 chk_FourthR5.Enabled = true;
                 chk_FifthR5.Enabled = true;
 
-                chk_FullR5.ForeColor = Color.Black;
+                chk_FullR5.ForeColor = Color.White;
             }
         }
 
