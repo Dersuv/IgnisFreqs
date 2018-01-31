@@ -55,14 +55,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Ignis_Freq.exe" size="445920">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Ignis_Freq.exe" size="443360">
       <assemblyIdentity name="Ignis_Freq" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>IQKxrdUMsajHfnWKsS4X6XydMHNCHn5bEMPBm0sHQA4=</dsig:DigestValue>
+        <dsig:DigestValue>k8qs/JzaviIPklD0v11f1sG0I5d1Vw+fufCdf4bbUKU=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>

@@ -18,21 +18,10 @@ namespace Ignis_Freq
 {
     public partial class Ignis_Freq : Form
     {
+        public string dungeonName;
         public Ignis_Freq()
         {
             InitializeComponent();
-            
-            updateCoquinn();
-            updateTotalFreq();
-            update_TotalNoOfStats();
-            UpdateWSP();
-            Calculate_StaHp251_Rank();
-            Calculate_StaWis251_Rank();
-            Calculate_StaPatt251_Rank();
-            Calculate_StrPatt251_Rank();
-            Calculate_DexPatt251_Rank();
-            Calculate_IntMatt251_Rank();
-            Calculate_IntMatt_Rank();
 
         }
         //Coquinn is updated in a code, because it is an alt character used by two people, therefore the frequence for this character is total frequence of Vaxin ans Souris divided by two
@@ -45,35 +34,35 @@ namespace Ignis_Freq
             double FifthCoquinn;
             NpgsqlConnection cn = new NpgsqlConnection(ConfigurationManager.ConnectionStrings["connA"].ConnectionString);
             cn.Open();
-            string FirstVax = "Select \"First Boss\" from  public.\"IBP\" Where \"Nickname\" = 'Vaxin'";
+            string FirstVax = "Select \"First Boss\" from  public.\""+dungeonName+"\" Where \"Nickname\" = 'Vaxin'";
             NpgsqlCommand checkFirstBoss1 = new NpgsqlCommand(FirstVax, cn);
             int Boss1_Vax = Convert.ToInt32(checkFirstBoss1.ExecuteScalar().ToString());
-            string SecondVax = "Select \"Second Boss\" from  public.\"IBP\" Where \"Nickname\" = 'Vaxin'";
+            string SecondVax = "Select \"Second Boss\" from  public.\""+dungeonName+"\" Where \"Nickname\" = 'Vaxin'";
             NpgsqlCommand checkSecondBoss1 = new NpgsqlCommand(SecondVax, cn);
             int Boss2_Vax = Convert.ToInt32(checkSecondBoss1.ExecuteScalar().ToString());
-            string ThirdVax = "Select \"Third Boss\" from  public.\"IBP\" Where \"Nickname\" = 'Vaxin'";
+            string ThirdVax = "Select \"Third Boss\" from  public.\""+dungeonName+"\" Where \"Nickname\" = 'Vaxin'";
             NpgsqlCommand checkThirdBoss1 = new NpgsqlCommand(ThirdVax, cn);
             int Boss3_Vax = Convert.ToInt32(checkThirdBoss1.ExecuteScalar().ToString());
-            string FourthVax = "Select \"Fourth Boss\" from  public.\"IBP\" Where \"Nickname\" = 'Vaxin'";
+            string FourthVax = "Select \"Fourth Boss\" from  public.\""+dungeonName+"\" Where \"Nickname\" = 'Vaxin'";
             NpgsqlCommand checkFourthBoss1 = new NpgsqlCommand(FourthVax, cn);
             int Boss4_Vax = Convert.ToInt32(checkFourthBoss1.ExecuteScalar().ToString());
-            string FifthVax = "Select \"Fifth Boss\" from  public.\"IBP\" Where \"Nickname\" = 'Vaxin'";
+            string FifthVax = "Select \"Fifth Boss\" from  public.\""+dungeonName+"\" Where \"Nickname\" = 'Vaxin'";
             NpgsqlCommand checkFifthBoss1 = new NpgsqlCommand(FifthVax, cn);
             int Boss5_Vax = Convert.ToInt32(checkFifthBoss1.ExecuteScalar().ToString());
 
-            string FirstSou = "Select \"First Boss\" from  public.\"IBP\" Where \"Nickname\" = 'Souris'";
+            string FirstSou = "Select \"First Boss\" from  public.\""+dungeonName+"\" Where \"Nickname\" = 'Souris'";
             NpgsqlCommand checkFirstBoss2 = new NpgsqlCommand(FirstSou, cn);
             int Boss1_Sou = Convert.ToInt32(checkFirstBoss2.ExecuteScalar().ToString());
-            string SecondSou = "Select \"Second Boss\" from  public.\"IBP\" Where \"Nickname\" = 'Souris'";
+            string SecondSou = "Select \"Second Boss\" from  public.\""+dungeonName+"\" Where \"Nickname\" = 'Souris'";
             NpgsqlCommand checkSecondBoss2 = new NpgsqlCommand(SecondSou, cn);
             int Boss2_Sou = Convert.ToInt32(checkSecondBoss2.ExecuteScalar().ToString());
-            string ThirdSou = "Select \"Third Boss\" from  public.\"IBP\" Where \"Nickname\" = 'Souris'";
+            string ThirdSou = "Select \"Third Boss\" from  public.\""+dungeonName+"\" Where \"Nickname\" = 'Souris'";
             NpgsqlCommand checkThirdBoss2 = new NpgsqlCommand(ThirdSou, cn);
             int Boss3_Sou = Convert.ToInt32(checkThirdBoss2.ExecuteScalar().ToString());
-            string FourthSou = "Select \"Fourth Boss\" from  public.\"IBP\" Where \"Nickname\" = 'Souris'";
+            string FourthSou = "Select \"Fourth Boss\" from  public.\""+dungeonName+"\" Where \"Nickname\" = 'Souris'";
             NpgsqlCommand checkFourthBoss2 = new NpgsqlCommand(FourthSou, cn);
             int Boss4_Sou = Convert.ToInt32(checkFourthBoss2.ExecuteScalar().ToString());
-            string FifthSou = "Select \"Fifth Boss\" from  public.\"IBP\" Where \"Nickname\" = 'Souris'";
+            string FifthSou = "Select \"Fifth Boss\" from  public.\""+dungeonName+"\" Where \"Nickname\" = 'Souris'";
             NpgsqlCommand checkFifthBoss2 = new NpgsqlCommand(FifthSou, cn);
             int Boss5_Sou = Convert.ToInt32(checkFifthBoss2.ExecuteScalar().ToString());
 
@@ -88,23 +77,23 @@ namespace Ignis_Freq
             int FourthCoquinn1 = Convert.ToInt32(Math.Round(FourthCoquinn, MidpointRounding.AwayFromZero));
             int FifthCoquinn1 = Convert.ToInt32(Math.Round(FifthCoquinn, MidpointRounding.AwayFromZero));
 
-            NpgsqlCommand cmd1 = new NpgsqlCommand("UPDATE public.\"IBP\" SET \"First Boss\" = " + FirstCoquinn1 + " Where \"Nickname\" ='Coquinn'");
+            NpgsqlCommand cmd1 = new NpgsqlCommand("UPDATE public.\""+dungeonName+"\" SET \"First Boss\" = " + FirstCoquinn1 + " Where \"Nickname\" ='Coquinn'");
             cmd1.Connection = cn;
             cmd1.ExecuteNonQuery();
 
-            NpgsqlCommand cmd2 = new NpgsqlCommand("UPDATE public.\"IBP\" SET \"Second Boss\" = " + SecondCoquinn1 + " Where \"Nickname\" ='Coquinn'");
+            NpgsqlCommand cmd2 = new NpgsqlCommand("UPDATE public.\""+dungeonName+"\" SET \"Second Boss\" = " + SecondCoquinn1 + " Where \"Nickname\" ='Coquinn'");
             cmd2.Connection = cn;
             cmd2.ExecuteNonQuery();
 
-            NpgsqlCommand cmd3 = new NpgsqlCommand("UPDATE public.\"IBP\" SET \"Third Boss\" = " + ThirdCoquinn1 + " Where \"Nickname\" ='Coquinn'");
+            NpgsqlCommand cmd3 = new NpgsqlCommand("UPDATE public.\""+dungeonName+"\" SET \"Third Boss\" = " + ThirdCoquinn1 + " Where \"Nickname\" ='Coquinn'");
             cmd3.Connection = cn;
             cmd3.ExecuteNonQuery();
 
-            NpgsqlCommand cmd4 = new NpgsqlCommand("UPDATE public.\"IBP\" SET \"Fourth Boss\" = " + FourthCoquinn1 + " Where \"Nickname\" ='Coquinn'");
+            NpgsqlCommand cmd4 = new NpgsqlCommand("UPDATE public.\""+dungeonName+"\" SET \"Fourth Boss\" = " + FourthCoquinn1 + " Where \"Nickname\" ='Coquinn'");
             cmd4.Connection = cn;
             cmd4.ExecuteNonQuery();
 
-            NpgsqlCommand cmd5 = new NpgsqlCommand("UPDATE public.\"IBP\" SET \"Fifth Boss\" = " + FifthCoquinn1 + " Where \"Nickname\" ='Coquinn'");
+            NpgsqlCommand cmd5 = new NpgsqlCommand("UPDATE public.\""+dungeonName+"\" SET \"Fifth Boss\" = " + FifthCoquinn1 + " Where \"Nickname\" ='Coquinn'");
             cmd5.Connection = cn;
             cmd5.ExecuteNonQuery();
             cn.Close();
@@ -138,7 +127,7 @@ namespace Ignis_Freq
             cn.Open();
 
             //Query to calculate Total Guild Frequency
-            string WSP_Query = "SELECT \"Total\" FROM public.\"IBP\"";
+            string WSP_Query = "SELECT \"Total\" FROM public.\""+dungeonName+"\"";
             using (NpgsqlCommand command = new NpgsqlCommand(WSP_Query, cn))
             {
                 using (NpgsqlDataReader reader = command.ExecuteReader())
@@ -154,7 +143,7 @@ namespace Ignis_Freq
 
                 total_WSP = total_WSP + WSP_Data[c];
             }
-            string CoqTotal = "Select \"Total\" from  public.\"IBP\" Where \"Nickname\" = 'Coquinn'";
+            string CoqTotal = "Select \"Total\" from  public.\""+dungeonName+"\" Where \"Nickname\" = 'Coquinn'";
             NpgsqlCommand getCoqTotal = new NpgsqlCommand(CoqTotal, cn);
             float TotalCoq = float.Parse(getCoqTotal.ExecuteScalar().ToString());
             total_WSP = total_WSP - TotalCoq;
@@ -163,7 +152,7 @@ namespace Ignis_Freq
             cmd1.ExecuteNonQuery();
 
             //Query to calculate Total Gold_Logarithm
-            string LogGold_Query = "SELECT \"Gold-Logarithm\" FROM public.\"IBP\"";
+            string LogGold_Query = "SELECT \"Gold-Logarithm\" FROM public.\""+dungeonName+"\"";
             using (NpgsqlCommand command = new NpgsqlCommand(LogGold_Query, cn))
             {
                 using (NpgsqlDataReader reader = command.ExecuteReader())
@@ -180,7 +169,7 @@ namespace Ignis_Freq
 
                 total_Gold = total_Gold + LogGold_Data[c];
             }
-            string CoqGold = "Select \"Gold-Logarithm\" from  public.\"IBP\" Where \"Nickname\" = 'Coquinn'";
+            string CoqGold = "Select \"Gold-Logarithm\" from  public.\""+dungeonName+"\" Where \"Nickname\" = 'Coquinn'";
             NpgsqlCommand getCoqGold = new NpgsqlCommand(CoqGold, cn);
             float GoldCoq = float.Parse(getCoqGold.ExecuteScalar().ToString());
             total_Gold = total_Gold - GoldCoq;
@@ -189,7 +178,7 @@ namespace Ignis_Freq
             Update_GoldLogarithm.ExecuteNonQuery();
 
             //Query to calculate Total Stat_Logarithm
-            string LogStat_Query = "SELECT \"Stat-Logarithm\" FROM public.\"IBP\"";
+            string LogStat_Query = "SELECT \"Stat-Logarithm\" FROM public.\""+dungeonName+"\"";
             using (NpgsqlCommand command = new NpgsqlCommand(LogStat_Query, cn))
             {
                 using (NpgsqlDataReader reader = command.ExecuteReader())
@@ -205,7 +194,7 @@ namespace Ignis_Freq
 
                 total_Stat = total_Stat + LogStat_Data[c];
             }
-            string CoqStat = "Select \"Stat-Logarithm\" from  public.\"IBP\" Where \"Nickname\" = 'Coquinn'";
+            string CoqStat = "Select \"Stat-Logarithm\" from  public.\""+dungeonName+"\" Where \"Nickname\" = 'Coquinn'";
             NpgsqlCommand getCoqStat = new NpgsqlCommand(CoqStat, cn);
             float StatCoq = float.Parse(getCoqStat.ExecuteScalar().ToString());
             total_Stat = total_Stat - StatCoq;
@@ -216,7 +205,7 @@ namespace Ignis_Freq
             
 
             //Query to calculate Total Logarithm for sta/hp 251 stats
-            string Rank_StaHp251_Query = "SELECT \"Stat-Logarithm\" From public.\"IBP\", public.\"People\" Where \"Class\" in ('Knight', 'Priest', 'Druid') AND public.\"People\".\"Nickname\" = public.\"IBP\".\"Nickname\"";
+            string Rank_StaHp251_Query = "SELECT \"Stat-Logarithm\" From public.\""+dungeonName+"\", public.\"People\" Where \"Class\" in ('Knight', 'Priest', 'Druid') AND public.\"People\".\"Nickname\" = public.\""+dungeonName+"\".\"Nickname\"";
             using (NpgsqlCommand command = new NpgsqlCommand(Rank_StaHp251_Query, cn))
             {
                 using (NpgsqlDataReader reader = command.ExecuteReader())
@@ -236,7 +225,7 @@ namespace Ignis_Freq
             Update_Total_StaHp251_Log.ExecuteNonQuery();
 
             //Query to calculate Total Logarithm for sta/wis 251 stats
-            string Rank_StaWis251_Query = "SELECT \"Stat-Logarithm\" From public.\"IBP\", public.\"People\" Where \"Class\" in ('Priest', 'Druid') AND public.\"People\".\"Nickname\" = public.\"IBP\".\"Nickname\"";
+            string Rank_StaWis251_Query = "SELECT \"Stat-Logarithm\" From public.\""+dungeonName+"\", public.\"People\" Where \"Class\" in ('Priest', 'Druid') AND public.\"People\".\"Nickname\" = public.\""+dungeonName+"\".\"Nickname\"";
             using (NpgsqlCommand command = new NpgsqlCommand(Rank_StaWis251_Query, cn))
             {
                 using (NpgsqlDataReader reader = command.ExecuteReader())
@@ -256,7 +245,7 @@ namespace Ignis_Freq
             Update_Total_StaWis251_Log.ExecuteNonQuery();
 
             //Query to calculate Total Logarithm for sta/patt 251 stats
-            string Rank_StaPatt251_Query = "SELECT \"Stat-Logarithm\" From public.\"IBP\", public.\"People\" Where \"Class\" in ('Knight') AND public.\"People\".\"Nickname\" = public.\"IBP\".\"Nickname\"";
+            string Rank_StaPatt251_Query = "SELECT \"Stat-Logarithm\" From public.\""+dungeonName+"\", public.\"People\" Where \"Class\" in ('Knight') AND public.\"People\".\"Nickname\" = public.\""+dungeonName+"\".\"Nickname\"";
             using (NpgsqlCommand command = new NpgsqlCommand(Rank_StaPatt251_Query, cn))
             {
                 using (NpgsqlDataReader reader = command.ExecuteReader())
@@ -276,7 +265,7 @@ namespace Ignis_Freq
             Update_Total_StaPatt251_Log.ExecuteNonQuery();
 
             //Query to calculate Total Logarithm for str/patt 251 stats
-            string Rank_StrPatt251_Query = "SELECT \"Stat-Logarithm\" From public.\"IBP\", public.\"People\" Where \"Class\" in ('Warden', 'Champion', 'Rouge', 'Scout') AND public.\"People\".\"Nickname\" = public.\"IBP\".\"Nickname\"";
+            string Rank_StrPatt251_Query = "SELECT \"Stat-Logarithm\" From public.\""+dungeonName+"\", public.\"People\" Where \"Class\" in ('Warden', 'Champion', 'Rouge', 'Scout') AND public.\"People\".\"Nickname\" = public.\""+dungeonName+"\".\"Nickname\"";
             using (NpgsqlCommand command = new NpgsqlCommand(Rank_StrPatt251_Query, cn))
             {
                 using (NpgsqlDataReader reader = command.ExecuteReader())
@@ -296,7 +285,7 @@ namespace Ignis_Freq
             Update_Total_StrPatt251_Log.ExecuteNonQuery();
 
             //Query to calculate Total Logarithm for dex/patt 251 stats
-            string Rank_DexPatt251_Query = "SELECT \"Stat-Logarithm\" From public.\"IBP\", public.\"People\" Where \"Class\" in ('Rouge','Scout') AND public.\"People\".\"Nickname\" = public.\"IBP\".\"Nickname\"";
+            string Rank_DexPatt251_Query = "SELECT \"Stat-Logarithm\" From public.\""+dungeonName+"\", public.\"People\" Where \"Class\" in ('Rouge','Scout') AND public.\"People\".\"Nickname\" = public.\""+dungeonName+"\".\"Nickname\"";
             using (NpgsqlCommand command = new NpgsqlCommand(Rank_DexPatt251_Query, cn))
             {
                 using (NpgsqlDataReader reader = command.ExecuteReader())
@@ -316,7 +305,7 @@ namespace Ignis_Freq
             Update_Total_DexPatt251_Log.ExecuteNonQuery();
 
             //Query to calculate Total Logarithm for int/matt 251 stats
-            string Rank_IntMatt251_Query = "SELECT \"Stat-Logarithm\" From public.\"IBP\", public.\"People\" Where \"Class\" in ('Mage','Warlock') AND public.\"People\".\"Nickname\" = public.\"IBP\".\"Nickname\"";
+            string Rank_IntMatt251_Query = "SELECT \"Stat-Logarithm\" From public.\""+dungeonName+"\", public.\"People\" Where \"Class\" in ('Mage','Warlock') AND public.\"People\".\"Nickname\" = public.\""+dungeonName+"\".\"Nickname\"";
             using (NpgsqlCommand command = new NpgsqlCommand(Rank_IntMatt251_Query, cn))
             {
                 using (NpgsqlDataReader reader = command.ExecuteReader())
@@ -336,7 +325,7 @@ namespace Ignis_Freq
             Update_Total_IntMatt251_Log.ExecuteNonQuery();
 
             //Query to calculate Total Logarithm for int/matt stats
-            string Rank_IntMatt_Query = "SELECT \"Stat-Logarithm\" From public.\"IBP\", public.\"People\" Where \"Class\" in ('Mage','Warlock') AND public.\"People\".\"Nickname\" = public.\"IBP\".\"Nickname\"";
+            string Rank_IntMatt_Query = "SELECT \"Stat-Logarithm\" From public.\""+dungeonName+"\", public.\"People\" Where \"Class\" in ('Mage','Warlock') AND public.\"People\".\"Nickname\" = public.\""+dungeonName+"\".\"Nickname\"";
             using (NpgsqlCommand command = new NpgsqlCommand(Rank_IntMatt_Query, cn))
             {
                 using (NpgsqlDataReader reader = command.ExecuteReader())
@@ -378,7 +367,7 @@ namespace Ignis_Freq
             NpgsqlConnection cn= new NpgsqlConnection(ConfigurationManager.ConnectionStrings["connA"].ConnectionString);
             cn.Open();
             //Query to calculate Total sta/hp 251 stats
-            string Total_StaHp251_Query = "SELECT \"sta/hp 251\" FROM public.\"IBP\", public.\"People\" Where \"Class\" in ('Knight', 'Priest', 'Druid') AND public.\"People\".\"Nickname\" = public.\"IBP\".\"Nickname\"";
+            string Total_StaHp251_Query = "SELECT \"sta/hp 251\" FROM public.\""+dungeonName+"\", public.\"People\" Where \"Class\" in ('Knight', 'Priest', 'Druid') AND public.\"People\".\"Nickname\" = public.\""+dungeonName+"\".\"Nickname\"";
             using (NpgsqlCommand command = new NpgsqlCommand(Total_StaHp251_Query, cn))
             {
                 using (NpgsqlDataReader reader = command.ExecuteReader())
@@ -399,7 +388,7 @@ namespace Ignis_Freq
             Update_Total_StaHp251.ExecuteNonQuery();
 
             //Query to calculate Total sta/wis 251 stats
-            string Total_StaWis251_Query = "SELECT \"sta/wis 251\" FROM public.\"IBP\", public.\"People\" Where \"Class\" in ('Priest', 'Druid') AND public.\"People\".\"Nickname\" = public.\"IBP\".\"Nickname\"";
+            string Total_StaWis251_Query = "SELECT \"sta/wis 251\" FROM public.\""+dungeonName+"\", public.\"People\" Where \"Class\" in ('Priest', 'Druid') AND public.\"People\".\"Nickname\" = public.\""+dungeonName+"\".\"Nickname\"";
             using (NpgsqlCommand command = new NpgsqlCommand(Total_StaWis251_Query, cn))
             {
                 using (NpgsqlDataReader reader = command.ExecuteReader())
@@ -420,7 +409,7 @@ namespace Ignis_Freq
             Update_Total_StaWis251.ExecuteNonQuery();
 
             //Query to calculate Total sta/patt 251 stats
-            string Total_StaPatt251_Query = "SELECT \"sta/patt 251\" FROM public.\"IBP\", public.\"People\" Where \"Class\" in ('Knight') AND public.\"People\".\"Nickname\" = public.\"IBP\".\"Nickname\"";
+            string Total_StaPatt251_Query = "SELECT \"sta/patt 251\" FROM public.\""+dungeonName+"\", public.\"People\" Where \"Class\" in ('Knight') AND public.\"People\".\"Nickname\" = public.\""+dungeonName+"\".\"Nickname\"";
             using (NpgsqlCommand command = new NpgsqlCommand(Total_StaPatt251_Query, cn))
             {
                 using (NpgsqlDataReader reader = command.ExecuteReader())
@@ -441,7 +430,7 @@ namespace Ignis_Freq
             Update_Total_StaPatt251.ExecuteNonQuery();
 
             //Query to calculate Total str/patt 251 stats
-            string Total_StrPatt251_Query = "SELECT \"str/patt 251\" FROM public.\"IBP\", public.\"People\" Where \"Class\" in ('Warden', 'Champion', 'Rouge', 'Scout') AND public.\"People\".\"Nickname\" = public.\"IBP\".\"Nickname\"";
+            string Total_StrPatt251_Query = "SELECT \"str/patt 251\" FROM public.\""+dungeonName+"\", public.\"People\" Where \"Class\" in ('Warden', 'Champion', 'Rouge', 'Scout') AND public.\"People\".\"Nickname\" = public.\""+dungeonName+"\".\"Nickname\"";
             using (NpgsqlCommand command = new NpgsqlCommand(Total_StrPatt251_Query, cn))
             {
                 using (NpgsqlDataReader reader = command.ExecuteReader())
@@ -462,7 +451,7 @@ namespace Ignis_Freq
             Update_Total_StrPatt251.ExecuteNonQuery();
 
             //Query to calculate Total dex/patt 251 stats
-            string Total_DexPatt251_Query = "SELECT \"dex/patt 251\" FROM public.\"IBP\", public.\"People\" Where \"Class\" in ('Rouge', 'Scout') AND public.\"People\".\"Nickname\" = public.\"IBP\".\"Nickname\"";
+            string Total_DexPatt251_Query = "SELECT \"dex/patt 251\" FROM public.\""+dungeonName+"\", public.\"People\" Where \"Class\" in ('Rouge', 'Scout') AND public.\"People\".\"Nickname\" = public.\""+dungeonName+"\".\"Nickname\"";
             using (NpgsqlCommand command = new NpgsqlCommand(Total_DexPatt251_Query, cn))
             {
                 using (NpgsqlDataReader reader = command.ExecuteReader())
@@ -483,7 +472,7 @@ namespace Ignis_Freq
             Update_Total_DexPatt251.ExecuteNonQuery();
 
             //Query to calculate Total int/matt 251 stats
-            string Total_IntMatt251_Query = "SELECT \"int/matt 251\" FROM public.\"IBP\", public.\"People\" Where \"Class\" in ('Mage', 'Warlock') AND public.\"People\".\"Nickname\" = public.\"IBP\".\"Nickname\"";
+            string Total_IntMatt251_Query = "SELECT \"int/matt 251\" FROM public.\""+dungeonName+"\", public.\"People\" Where \"Class\" in ('Mage', 'Warlock') AND public.\"People\".\"Nickname\" = public.\""+dungeonName+"\".\"Nickname\"";
             using (NpgsqlCommand command = new NpgsqlCommand(Total_IntMatt251_Query, cn))
             {
                 using (NpgsqlDataReader reader = command.ExecuteReader())
@@ -504,7 +493,7 @@ namespace Ignis_Freq
             Update_Total_IntMatt251.ExecuteNonQuery();
 
             //Query to calculate Total int/matt stats
-            string Total_IntMatt_Query = "SELECT \"int/matt\" FROM public.\"IBP\", public.\"People\" Where \"Class\" in ('Mage', 'Warlock') AND public.\"People\".\"Nickname\" = public.\"IBP\".\"Nickname\"";
+            string Total_IntMatt_Query = "SELECT \"int/matt\" FROM public.\""+dungeonName+"\", public.\"People\" Where \"Class\" in ('Mage', 'Warlock') AND public.\"People\".\"Nickname\" = public.\""+dungeonName+"\".\"Nickname\"";
             using (NpgsqlCommand command = new NpgsqlCommand(Total_IntMatt_Query, cn))
             {
                 using (NpgsqlDataReader reader = command.ExecuteReader())
@@ -532,7 +521,7 @@ namespace Ignis_Freq
 
            NpgsqlConnection cn= new NpgsqlConnection(ConfigurationManager.ConnectionStrings["connA"].ConnectionString);
             cn.Open();
-            string query = "SELECT \"Nickname\" FROM public.\"IBP\"";
+            string query = "SELECT \"Nickname\" FROM public.\""+dungeonName+"\"";
             using (NpgsqlCommand command = new NpgsqlCommand(query, cn))
             {
                 using (NpgsqlDataReader reader = command.ExecuteReader())
@@ -549,41 +538,45 @@ namespace Ignis_Freq
             for (var i = 0; i < columnData.Count; i++)
             {
                 cn.Open();
-                string queryStr = "Select \"First Boss\" from  public.\"IBP\" Where \"Nickname\" = '" + columnData[i] + "'";
+                string queryStr = "Select \"First Boss\" from  public.\""+dungeonName+"\" Where \"Nickname\" = '" + columnData[i] + "'";
                 NpgsqlCommand checkFirstBoss = new NpgsqlCommand(queryStr, cn);
                 int temp = Convert.ToInt32(checkFirstBoss.ExecuteScalar().ToString());
 
-                string queryStr2 = "Select \"Second Boss\" from  public.\"IBP\" Where \"Nickname\" = '" + columnData[i] + "'";
+                string queryStr2 = "Select \"Second Boss\" from  public.\""+dungeonName+"\" Where \"Nickname\" = '" + columnData[i] + "'";
                 NpgsqlCommand checkSecongBoss = new NpgsqlCommand(queryStr2, cn);
                 int temp2 = Convert.ToInt32(checkSecongBoss.ExecuteScalar().ToString());
 
-                string queryStr3 = "Select \"Third Boss\" from  public.\"IBP\" Where \"Nickname\" = '" + columnData[i] + "'";
+                string queryStr3 = "Select \"Third Boss\" from  public.\""+dungeonName+"\" Where \"Nickname\" = '" + columnData[i] + "'";
                 NpgsqlCommand checkThirdBoss = new NpgsqlCommand(queryStr3, cn);
                 int temp3 = Convert.ToInt32(checkThirdBoss.ExecuteScalar().ToString());
 
-                string queryStr4 = "Select \"Fourth Boss\" from  public.\"IBP\" Where \"Nickname\" = '" + columnData[i] + "'";
+                string queryStr4 = "Select \"Fourth Boss\" from  public.\""+dungeonName+"\" Where \"Nickname\" = '" + columnData[i] + "'";
                 NpgsqlCommand checkFourthBoss = new NpgsqlCommand(queryStr4, cn);
                 int temp4 = Convert.ToInt32(checkFourthBoss.ExecuteScalar().ToString());
 
-                string queryStr5 = "Select \"Fifth Boss\" from  public.\"IBP\" Where \"Nickname\" = '" + columnData[i] + "'";
+                string queryStr5 = "Select \"Fifth Boss\" from  public.\""+dungeonName+"\" Where \"Nickname\" = '" + columnData[i] + "'";
                 NpgsqlCommand checkFifthBoss = new NpgsqlCommand(queryStr5, cn);
                 int temp5 = Convert.ToInt32(checkFifthBoss.ExecuteScalar().ToString());
 
+                string queryA1Field = "Select \"WSP\" from  public.\"WSP\" Where \"WSP_Name\" = 'A1'";
+                NpgsqlCommand checkA1Field = new NpgsqlCommand(queryA1Field, cn);
+                int A1 = Convert.ToInt32(checkA1Field.ExecuteScalar().ToString());
+
                 double totalFreq = (1 * temp) + (1.2 * temp2) + (1.4 * temp3) + (1.3 * temp4) + (1.1 * temp5);
-                double goldLog = 80 * Math.Log10((totalFreq + 80) / 80);
+                double goldLog = A1 * Math.Log10((totalFreq + A1) / A1);
                 goldLog = Math.Round(goldLog, 2);
 
                 double statLog = Math.Log10(totalFreq + 1);
                 statLog = Math.Round(statLog, 2);
-                NpgsqlCommand cmd = new NpgsqlCommand("UPDATE public.\"IBP\" SET \"Total\" = " + totalFreq + " Where \"Nickname\" ='" + columnData[i] + "' ");
+                NpgsqlCommand cmd = new NpgsqlCommand("UPDATE public.\""+dungeonName+"\" SET \"Total\" = " + totalFreq + " Where \"Nickname\" ='" + columnData[i] + "' ");
                 cmd.Connection = cn;
                 cmd.ExecuteNonQuery();
 
-                NpgsqlCommand update_LogGold = new NpgsqlCommand("UPDATE public.\"IBP\" SET \"Gold-Logarithm\" = " + goldLog + " Where \"Nickname\" ='" + columnData[i] + "' ");
+                NpgsqlCommand update_LogGold = new NpgsqlCommand("UPDATE public.\""+dungeonName+"\" SET \"Gold-Logarithm\" = " + goldLog + " Where \"Nickname\" ='" + columnData[i] + "' ");
                 update_LogGold.Connection = cn;
                 update_LogGold.ExecuteNonQuery();
 
-                NpgsqlCommand update_LogStat = new NpgsqlCommand("UPDATE public.\"IBP\" SET \"Stat-Logarithm\" = " + statLog + " Where \"Nickname\" ='" + columnData[i] + "' ");
+                NpgsqlCommand update_LogStat = new NpgsqlCommand("UPDATE public.\""+dungeonName+"\" SET \"Stat-Logarithm\" = " + statLog + " Where \"Nickname\" ='" + columnData[i] + "' ");
                 update_LogStat.Connection = cn;
                 update_LogStat.ExecuteNonQuery();
                 
@@ -597,7 +590,7 @@ namespace Ignis_Freq
             List<String> PeopleForStaHP251 = new List<String>();
             NpgsqlConnection cn= new NpgsqlConnection(ConfigurationManager.ConnectionStrings["connA"].ConnectionString);
             cn.Open();
-            string getPeopleForStaHP = "SELECT public.\"IBP\".\"Nickname\" FROM public.\"IBP\", public.\"People\" Where \"Class\" in ('Knight', 'Priest', 'Druid') AND public.\"People\".\"Nickname\" = public.\"IBP\".\"Nickname\"";
+            string getPeopleForStaHP = "SELECT public.\""+dungeonName+"\".\"Nickname\" FROM public.\""+dungeonName+"\", public.\"People\" Where \"Class\" in ('Knight', 'Priest', 'Druid') AND public.\"People\".\"Nickname\" = public.\""+dungeonName+"\".\"Nickname\"";
             using (NpgsqlCommand command = new NpgsqlCommand(getPeopleForStaHP, cn))
             {
                 using (NpgsqlDataReader reader = command.ExecuteReader())
@@ -612,29 +605,28 @@ namespace Ignis_Freq
             for (var i = 0; i < PeopleForStaHP251.Count; i++)
             {
                 cn.Open();
-                string queryStr = "Select \"First Boss\" from  public.\"IBP\" Where \"Nickname\" = '" + PeopleForStaHP251[i] + "'";
+                string queryStr = "Select \"First Boss\" from  public.\""+dungeonName+"\" Where \"Nickname\" = '" + PeopleForStaHP251[i] + "'";
                 NpgsqlCommand checkFirstBoss = new NpgsqlCommand(queryStr, cn);
                 int temp = Convert.ToInt32(checkFirstBoss.ExecuteScalar().ToString());
 
-                string queryStr2 = "Select \"Second Boss\" from  public.\"IBP\" Where \"Nickname\" = '" + PeopleForStaHP251[i] + "'";
+                string queryStr2 = "Select \"Second Boss\" from  public.\""+dungeonName+"\" Where \"Nickname\" = '" + PeopleForStaHP251[i] + "'";
                 NpgsqlCommand checkSecongBoss = new NpgsqlCommand(queryStr2, cn);
                 int temp2 = Convert.ToInt32(checkSecongBoss.ExecuteScalar().ToString());
 
-                string queryStr3 = "Select \"Third Boss\" from  public.\"IBP\" Where \"Nickname\" = '" + PeopleForStaHP251[i] + "'";
+                string queryStr3 = "Select \"Third Boss\" from  public.\""+dungeonName+"\" Where \"Nickname\" = '" + PeopleForStaHP251[i] + "'";
                 NpgsqlCommand checkThirdBoss = new NpgsqlCommand(queryStr3, cn);
                 int temp3 = Convert.ToInt32(checkThirdBoss.ExecuteScalar().ToString());
 
-                string queryStr4 = "Select \"Fourth Boss\" from  public.\"IBP\" Where \"Nickname\" = '" + PeopleForStaHP251[i] + "'";
+                string queryStr4 = "Select \"Fourth Boss\" from  public.\""+dungeonName+"\" Where \"Nickname\" = '" + PeopleForStaHP251[i] + "'";
                 NpgsqlCommand checkFourthBoss = new NpgsqlCommand(queryStr4, cn);
                 int temp4 = Convert.ToInt32(checkFourthBoss.ExecuteScalar().ToString());
 
-                string queryStr5 = "Select \"Fifth Boss\" from  public.\"IBP\" Where \"Nickname\" = '" + PeopleForStaHP251[i] + "'";
+                string queryStr5 = "Select \"Fifth Boss\" from  public.\""+dungeonName+"\" Where \"Nickname\" = '" + PeopleForStaHP251[i] + "'";
                 NpgsqlCommand checkFifthBoss = new NpgsqlCommand(queryStr5, cn);
                 int temp5 = Convert.ToInt32(checkFifthBoss.ExecuteScalar().ToString());
 
+
                 double totalFreq = (1 * temp) + (1.2 * temp2) + (1.4 * temp3) + (1.3 * temp4) + (1.1 * temp5);
-                double goldLog = 80 * Math.Log10((totalFreq + 80) / 80);
-                goldLog = Math.Round(goldLog, 2);
 
                 double statLog = Math.Log10(totalFreq + 1);
                 statLog = Math.Round(statLog, 2);
@@ -648,7 +640,7 @@ namespace Ignis_Freq
                 NpgsqlCommand Total_Log_StaHp251 = new NpgsqlCommand(getTotal_Log_StaHp251, cn);
                 decimal total_Log1 = Convert.ToDecimal(Total_Log_StaHp251.ExecuteScalar().ToString());
 
-                string getUser_StaHp251 = "SELECT \"sta/hp 251\" FROM public.\"IBP\" Where \"Nickname\" = '" + PeopleForStaHP251[i] + "'";
+                string getUser_StaHp251 = "SELECT \"sta/hp 251\" FROM public.\""+dungeonName+"\" Where \"Nickname\" = '" + PeopleForStaHP251[i] + "'";
                 NpgsqlCommand user_StaHP251 = new NpgsqlCommand(getUser_StaHp251, cn);
                 int user_StaHp251No = Convert.ToInt32(user_StaHP251.ExecuteScalar().ToString());
 
@@ -663,7 +655,7 @@ namespace Ignis_Freq
                 }
                 
 
-                NpgsqlCommand update_UserStaHp251_Log = new NpgsqlCommand("UPDATE public.\"IBP\" SET \"rank1\" = " + newRank_StaHp251 + " Where \"Nickname\" ='" + PeopleForStaHP251[i] + "' ");
+                NpgsqlCommand update_UserStaHp251_Log = new NpgsqlCommand("UPDATE public.\""+dungeonName+"\" SET \"rank1\" = " + newRank_StaHp251 + " Where \"Nickname\" ='" + PeopleForStaHP251[i] + "' ");
                 update_UserStaHp251_Log.Connection = cn;
                 update_UserStaHp251_Log.ExecuteNonQuery();
                 cn.Close();
@@ -675,7 +667,7 @@ namespace Ignis_Freq
             List<String> PeopleForStaWis251 = new List<String>();
             NpgsqlConnection cn= new NpgsqlConnection(ConfigurationManager.ConnectionStrings["connA"].ConnectionString);
             cn.Open();
-            string getPeopleForStaWis = "SELECT public.\"IBP\".\"Nickname\" FROM public.\"IBP\", public.\"People\" Where \"Class\" in ('Priest', 'Druid') AND public.\"People\".\"Nickname\" = public.\"IBP\".\"Nickname\"";
+            string getPeopleForStaWis = "SELECT public.\""+dungeonName+"\".\"Nickname\" FROM public.\""+dungeonName+"\", public.\"People\" Where \"Class\" in ('Priest', 'Druid') AND public.\"People\".\"Nickname\" = public.\""+dungeonName+"\".\"Nickname\"";
             using (NpgsqlCommand command = new NpgsqlCommand(getPeopleForStaWis, cn))
             {
                 using (NpgsqlDataReader reader = command.ExecuteReader())
@@ -690,29 +682,28 @@ namespace Ignis_Freq
             for (var i = 0; i < PeopleForStaWis251.Count; i++)
             {
                 cn.Open();
-                string queryStr = "Select \"First Boss\" from  public.\"IBP\" Where \"Nickname\" = '" + PeopleForStaWis251[i] + "'";
+                string queryStr = "Select \"First Boss\" from  public.\""+dungeonName+"\" Where \"Nickname\" = '" + PeopleForStaWis251[i] + "'";
                 NpgsqlCommand checkFirstBoss = new NpgsqlCommand(queryStr, cn);
                 int temp = Convert.ToInt32(checkFirstBoss.ExecuteScalar().ToString());
 
-                string queryStr2 = "Select \"Second Boss\" from  public.\"IBP\" Where \"Nickname\" = '" + PeopleForStaWis251[i] + "'";
+                string queryStr2 = "Select \"Second Boss\" from  public.\""+dungeonName+"\" Where \"Nickname\" = '" + PeopleForStaWis251[i] + "'";
                 NpgsqlCommand checkSecongBoss = new NpgsqlCommand(queryStr2, cn);
                 int temp2 = Convert.ToInt32(checkSecongBoss.ExecuteScalar().ToString());
 
-                string queryStr3 = "Select \"Third Boss\" from  public.\"IBP\" Where \"Nickname\" = '" + PeopleForStaWis251[i] + "'";
+                string queryStr3 = "Select \"Third Boss\" from  public.\""+dungeonName+"\" Where \"Nickname\" = '" + PeopleForStaWis251[i] + "'";
                 NpgsqlCommand checkThirdBoss = new NpgsqlCommand(queryStr3, cn);
                 int temp3 = Convert.ToInt32(checkThirdBoss.ExecuteScalar().ToString());
 
-                string queryStr4 = "Select \"Fourth Boss\" from  public.\"IBP\" Where \"Nickname\" = '" + PeopleForStaWis251[i] + "'";
+                string queryStr4 = "Select \"Fourth Boss\" from  public.\""+dungeonName+"\" Where \"Nickname\" = '" + PeopleForStaWis251[i] + "'";
                 NpgsqlCommand checkFourthBoss = new NpgsqlCommand(queryStr4, cn);
                 int temp4 = Convert.ToInt32(checkFourthBoss.ExecuteScalar().ToString());
 
-                string queryStr5 = "Select \"Fifth Boss\" from  public.\"IBP\" Where \"Nickname\" = '" + PeopleForStaWis251[i] + "'";
+                string queryStr5 = "Select \"Fifth Boss\" from  public.\""+dungeonName+"\" Where \"Nickname\" = '" + PeopleForStaWis251[i] + "'";
                 NpgsqlCommand checkFifthBoss = new NpgsqlCommand(queryStr5, cn);
                 int temp5 = Convert.ToInt32(checkFifthBoss.ExecuteScalar().ToString());
 
+               
                 double totalFreq = (1 * temp) + (1.2 * temp2) + (1.4 * temp3) + (1.3 * temp4) + (1.1 * temp5);
-                double goldLog = 80 * Math.Log10((totalFreq + 80) / 80);
-                goldLog = Math.Round(goldLog, 2);
 
                 double statLog = Math.Log10(totalFreq + 1);
                 statLog = Math.Round(statLog, 2);
@@ -726,7 +717,7 @@ namespace Ignis_Freq
                 NpgsqlCommand Total_Log_StaWis251 = new NpgsqlCommand(getTotal_Log_StaWis251, cn);
                 decimal total_Log1 = Convert.ToDecimal(Total_Log_StaWis251.ExecuteScalar().ToString());
 
-                string getUser_StaWis251 = "SELECT \"sta/wis 251\" FROM public.\"IBP\" Where \"Nickname\" = '" + PeopleForStaWis251[i] + "'";
+                string getUser_StaWis251 = "SELECT \"sta/wis 251\" FROM public.\""+dungeonName+"\" Where \"Nickname\" = '" + PeopleForStaWis251[i] + "'";
                 NpgsqlCommand user_StaWis251 = new NpgsqlCommand(getUser_StaWis251, cn);
                 int user_StaWis251No = Convert.ToInt32(user_StaWis251.ExecuteScalar().ToString());
 
@@ -741,7 +732,7 @@ namespace Ignis_Freq
                 }
                 
 
-                NpgsqlCommand update_UserStaWis251_Log = new NpgsqlCommand("UPDATE public.\"IBP\" SET \"rank2\" = " + newRank_StaWis251 + " Where \"Nickname\" ='" + PeopleForStaWis251[i] + "' ");
+                NpgsqlCommand update_UserStaWis251_Log = new NpgsqlCommand("UPDATE public.\""+dungeonName+"\" SET \"rank2\" = " + newRank_StaWis251 + " Where \"Nickname\" ='" + PeopleForStaWis251[i] + "' ");
                 update_UserStaWis251_Log.Connection = cn;
                 update_UserStaWis251_Log.ExecuteNonQuery();
                 cn.Close();
@@ -753,7 +744,7 @@ namespace Ignis_Freq
             List<String> PeopleForStaPatt251 = new List<String>();
             NpgsqlConnection cn = new NpgsqlConnection(ConfigurationManager.ConnectionStrings["connA"].ConnectionString);
             cn.Open();
-            string getPeopleForStaPatt = "SELECT public.\"IBP\".\"Nickname\" FROM public.\"IBP\", public.\"People\" Where \"Class\" in ('Knight') AND public.\"People\".\"Nickname\" = public.\"IBP\".\"Nickname\"";
+            string getPeopleForStaPatt = "SELECT public.\""+dungeonName+"\".\"Nickname\" FROM public.\""+dungeonName+"\", public.\"People\" Where \"Class\" in ('Knight') AND public.\"People\".\"Nickname\" = public.\""+dungeonName+"\".\"Nickname\"";
             using (NpgsqlCommand command = new NpgsqlCommand(getPeopleForStaPatt, cn))
             {
                 using (NpgsqlDataReader reader = command.ExecuteReader())
@@ -768,29 +759,28 @@ namespace Ignis_Freq
             for (var i = 0; i < PeopleForStaPatt251.Count; i++)
             {
                 cn.Open();
-                string queryStr = "Select \"First Boss\" from  public.\"IBP\" Where \"Nickname\" = '" + PeopleForStaPatt251[i] + "'";
+                string queryStr = "Select \"First Boss\" from  public.\""+dungeonName+"\" Where \"Nickname\" = '" + PeopleForStaPatt251[i] + "'";
                 NpgsqlCommand checkFirstBoss = new NpgsqlCommand(queryStr, cn);
                 int temp = Convert.ToInt32(checkFirstBoss.ExecuteScalar().ToString());
 
-                string queryStr2 = "Select \"Second Boss\" from  public.\"IBP\" Where \"Nickname\" = '" + PeopleForStaPatt251[i] + "'";
+                string queryStr2 = "Select \"Second Boss\" from  public.\""+dungeonName+"\" Where \"Nickname\" = '" + PeopleForStaPatt251[i] + "'";
                 NpgsqlCommand checkSecongBoss = new NpgsqlCommand(queryStr2, cn);
                 int temp2 = Convert.ToInt32(checkSecongBoss.ExecuteScalar().ToString());
 
-                string queryStr3 = "Select \"Third Boss\" from  public.\"IBP\" Where \"Nickname\" = '" + PeopleForStaPatt251[i] + "'";
+                string queryStr3 = "Select \"Third Boss\" from  public.\""+dungeonName+"\" Where \"Nickname\" = '" + PeopleForStaPatt251[i] + "'";
                 NpgsqlCommand checkThirdBoss = new NpgsqlCommand(queryStr3, cn);
                 int temp3 = Convert.ToInt32(checkThirdBoss.ExecuteScalar().ToString());
 
-                string queryStr4 = "Select \"Fourth Boss\" from  public.\"IBP\" Where \"Nickname\" = '" + PeopleForStaPatt251[i] + "'";
+                string queryStr4 = "Select \"Fourth Boss\" from  public.\""+dungeonName+"\" Where \"Nickname\" = '" + PeopleForStaPatt251[i] + "'";
                 NpgsqlCommand checkFourthBoss = new NpgsqlCommand(queryStr4, cn);
                 int temp4 = Convert.ToInt32(checkFourthBoss.ExecuteScalar().ToString());
 
-                string queryStr5 = "Select \"Fifth Boss\" from  public.\"IBP\" Where \"Nickname\" = '" + PeopleForStaPatt251[i] + "'";
+                string queryStr5 = "Select \"Fifth Boss\" from  public.\""+dungeonName+"\" Where \"Nickname\" = '" + PeopleForStaPatt251[i] + "'";
                 NpgsqlCommand checkFifthBoss = new NpgsqlCommand(queryStr5, cn);
                 int temp5 = Convert.ToInt32(checkFifthBoss.ExecuteScalar().ToString());
 
+               
                 double totalFreq = (1 * temp) + (1.2 * temp2) + (1.4 * temp3) + (1.3 * temp4) + (1.1 * temp5);
-                double goldLog = 80 * Math.Log10((totalFreq + 80) / 80);
-                goldLog = Math.Round(goldLog, 2);
 
                 double statLog = Math.Log10(totalFreq + 1);
                 statLog = Math.Round(statLog, 2);
@@ -804,7 +794,7 @@ namespace Ignis_Freq
                 NpgsqlCommand Total_Log_StaPatt251 = new NpgsqlCommand(getTotal_Log_StaPatt251, cn);
                 decimal total_Log1 = Convert.ToDecimal(Total_Log_StaPatt251.ExecuteScalar().ToString());
 
-                string getUser_StaPatt251 = "SELECT \"sta/patt 251\" FROM public.\"IBP\" Where \"Nickname\" = '" + PeopleForStaPatt251[i] + "'";
+                string getUser_StaPatt251 = "SELECT \"sta/patt 251\" FROM public.\""+dungeonName+"\" Where \"Nickname\" = '" + PeopleForStaPatt251[i] + "'";
                 NpgsqlCommand user_StaPatt251 = new NpgsqlCommand(getUser_StaPatt251, cn);
                 int user_StaPatt251No = Convert.ToInt32(user_StaPatt251.ExecuteScalar().ToString());
 
@@ -818,7 +808,7 @@ namespace Ignis_Freq
                     newRank_StaPatt251 = (decimal)statLog / ((decimal)total_Log1 / (total1 + 1)) - user_StaPatt251No;
                 }
 
-                NpgsqlCommand update_UserStaPatt251_Log = new NpgsqlCommand("UPDATE public.\"IBP\" SET \"rank3\" = " + newRank_StaPatt251 + " Where \"Nickname\" ='" + PeopleForStaPatt251[i] + "' ");
+                NpgsqlCommand update_UserStaPatt251_Log = new NpgsqlCommand("UPDATE public.\""+dungeonName+"\" SET \"rank3\" = " + newRank_StaPatt251 + " Where \"Nickname\" ='" + PeopleForStaPatt251[i] + "' ");
                 update_UserStaPatt251_Log.Connection = cn;
                 update_UserStaPatt251_Log.ExecuteNonQuery();
                 cn.Close();
@@ -830,7 +820,7 @@ namespace Ignis_Freq
             List<String> PeopleForStrPatt251 = new List<String>();
             NpgsqlConnection cn = new NpgsqlConnection(ConfigurationManager.ConnectionStrings["connA"].ConnectionString);
             cn.Open();
-            string getPeopleForStrPatt = "SELECT public.\"IBP\".\"Nickname\" FROM public.\"IBP\", public.\"People\" Where \"Class\" in ('Warden', 'Champion', 'Rouge', 'Scout') AND public.\"People\".\"Nickname\" = public.\"IBP\".\"Nickname\"";
+            string getPeopleForStrPatt = "SELECT public.\""+dungeonName+"\".\"Nickname\" FROM public.\""+dungeonName+"\", public.\"People\" Where \"Class\" in ('Warden', 'Champion', 'Rouge', 'Scout') AND public.\"People\".\"Nickname\" = public.\""+dungeonName+"\".\"Nickname\"";
             using (NpgsqlCommand command = new NpgsqlCommand(getPeopleForStrPatt, cn))
             {
                 using (NpgsqlDataReader reader = command.ExecuteReader())
@@ -845,29 +835,27 @@ namespace Ignis_Freq
             for (var i = 0; i < PeopleForStrPatt251.Count; i++)
             {
                 cn.Open();
-                string queryStr = "Select \"First Boss\" from  public.\"IBP\" Where \"Nickname\" = '" + PeopleForStrPatt251[i] + "'";
+                string queryStr = "Select \"First Boss\" from  public.\""+dungeonName+"\" Where \"Nickname\" = '" + PeopleForStrPatt251[i] + "'";
                 NpgsqlCommand checkFirstBoss = new NpgsqlCommand(queryStr, cn);
                 int temp = Convert.ToInt32(checkFirstBoss.ExecuteScalar().ToString());
 
-                string queryStr2 = "Select \"Second Boss\" from  public.\"IBP\" Where \"Nickname\" = '" + PeopleForStrPatt251[i] + "'";
+                string queryStr2 = "Select \"Second Boss\" from  public.\""+dungeonName+"\" Where \"Nickname\" = '" + PeopleForStrPatt251[i] + "'";
                 NpgsqlCommand checkSecongBoss = new NpgsqlCommand(queryStr2, cn);
                 int temp2 = Convert.ToInt32(checkSecongBoss.ExecuteScalar().ToString());
 
-                string queryStr3 = "Select \"Third Boss\" from  public.\"IBP\" Where \"Nickname\" = '" + PeopleForStrPatt251[i] + "'";
+                string queryStr3 = "Select \"Third Boss\" from  public.\""+dungeonName+"\" Where \"Nickname\" = '" + PeopleForStrPatt251[i] + "'";
                 NpgsqlCommand checkThirdBoss = new NpgsqlCommand(queryStr3, cn);
                 int temp3 = Convert.ToInt32(checkThirdBoss.ExecuteScalar().ToString());
 
-                string queryStr4 = "Select \"Fourth Boss\" from  public.\"IBP\" Where \"Nickname\" = '" + PeopleForStrPatt251[i] + "'";
+                string queryStr4 = "Select \"Fourth Boss\" from  public.\""+dungeonName+"\" Where \"Nickname\" = '" + PeopleForStrPatt251[i] + "'";
                 NpgsqlCommand checkFourthBoss = new NpgsqlCommand(queryStr4, cn);
                 int temp4 = Convert.ToInt32(checkFourthBoss.ExecuteScalar().ToString());
 
-                string queryStr5 = "Select \"Fifth Boss\" from  public.\"IBP\" Where \"Nickname\" = '" + PeopleForStrPatt251[i] + "'";
+                string queryStr5 = "Select \"Fifth Boss\" from  public.\""+dungeonName+"\" Where \"Nickname\" = '" + PeopleForStrPatt251[i] + "'";
                 NpgsqlCommand checkFifthBoss = new NpgsqlCommand(queryStr5, cn);
                 int temp5 = Convert.ToInt32(checkFifthBoss.ExecuteScalar().ToString());
 
                 double totalFreq = (1 * temp) + (1.2 * temp2) + (1.4 * temp3) + (1.3 * temp4) + (1.1 * temp5);
-                double goldLog = 80 * Math.Log10((totalFreq + 80) / 80);
-                goldLog = Math.Round(goldLog, 2);
 
                 double statLog = Math.Log10(totalFreq + 1);
                 statLog = Math.Round(statLog, 2);
@@ -881,7 +869,7 @@ namespace Ignis_Freq
                 NpgsqlCommand Total_Log_StrPatt251 = new NpgsqlCommand(getTotal_Log_StrPatt251, cn);
                 decimal total_Log1 = Convert.ToDecimal(Total_Log_StrPatt251.ExecuteScalar().ToString());
 
-                string getUser_StrPatt251 = "SELECT \"str/patt 251\" FROM public.\"IBP\" Where \"Nickname\" = '" + PeopleForStrPatt251[i] + "'";
+                string getUser_StrPatt251 = "SELECT \"str/patt 251\" FROM public.\""+dungeonName+"\" Where \"Nickname\" = '" + PeopleForStrPatt251[i] + "'";
                 NpgsqlCommand user_StrPatt251 = new NpgsqlCommand(getUser_StrPatt251, cn);
                 int user_StrPatt251No = Convert.ToInt32(user_StrPatt251.ExecuteScalar().ToString());
 
@@ -895,7 +883,7 @@ namespace Ignis_Freq
                     newRank_StrPatt251 = (decimal)statLog / ((decimal)total_Log1 / (total1 + 1)) - user_StrPatt251No;
                 }
                 
-                NpgsqlCommand update_UserStrPatt251_Log = new NpgsqlCommand("UPDATE public.\"IBP\" SET \"rank4\" = " + newRank_StrPatt251 + " Where \"Nickname\" ='" + PeopleForStrPatt251[i] + "' ");
+                NpgsqlCommand update_UserStrPatt251_Log = new NpgsqlCommand("UPDATE public.\""+dungeonName+"\" SET \"rank4\" = " + newRank_StrPatt251 + " Where \"Nickname\" ='" + PeopleForStrPatt251[i] + "' ");
                 update_UserStrPatt251_Log.Connection = cn;
                 update_UserStrPatt251_Log.ExecuteNonQuery();
                 cn.Close();
@@ -907,7 +895,7 @@ namespace Ignis_Freq
             List<String> PeopleForDexPatt251 = new List<String>();
             NpgsqlConnection cn = new NpgsqlConnection(ConfigurationManager.ConnectionStrings["connA"].ConnectionString);
             cn.Open();
-            string getPeopleForDexPatt = "SELECT public.\"IBP\".\"Nickname\" FROM public.\"IBP\", public.\"People\" Where \"Class\" in ('Rouge', 'Scout') AND public.\"People\".\"Nickname\" = public.\"IBP\".\"Nickname\"";
+            string getPeopleForDexPatt = "SELECT public.\""+dungeonName+"\".\"Nickname\" FROM public.\""+dungeonName+"\", public.\"People\" Where \"Class\" in ('Rouge', 'Scout') AND public.\"People\".\"Nickname\" = public.\""+dungeonName+"\".\"Nickname\"";
             using (NpgsqlCommand command = new NpgsqlCommand(getPeopleForDexPatt, cn))
             {
                 using (NpgsqlDataReader reader = command.ExecuteReader())
@@ -922,29 +910,27 @@ namespace Ignis_Freq
             for (var i = 0; i < PeopleForDexPatt251.Count; i++)
             {
                 cn.Open();
-                string queryStr = "Select \"First Boss\" from  public.\"IBP\" Where \"Nickname\" = '" + PeopleForDexPatt251[i] + "'";
+                string queryStr = "Select \"First Boss\" from  public.\""+dungeonName+"\" Where \"Nickname\" = '" + PeopleForDexPatt251[i] + "'";
                 NpgsqlCommand checkFirstBoss = new NpgsqlCommand(queryStr, cn);
                 int temp = Convert.ToInt32(checkFirstBoss.ExecuteScalar().ToString());
 
-                string queryStr2 = "Select \"Second Boss\" from  public.\"IBP\" Where \"Nickname\" = '" + PeopleForDexPatt251[i] + "'";
+                string queryStr2 = "Select \"Second Boss\" from  public.\""+dungeonName+"\" Where \"Nickname\" = '" + PeopleForDexPatt251[i] + "'";
                 NpgsqlCommand checkSecongBoss = new NpgsqlCommand(queryStr2, cn);
                 int temp2 = Convert.ToInt32(checkSecongBoss.ExecuteScalar().ToString());
 
-                string queryStr3 = "Select \"Third Boss\" from  public.\"IBP\" Where \"Nickname\" = '" + PeopleForDexPatt251[i] + "'";
+                string queryStr3 = "Select \"Third Boss\" from  public.\""+dungeonName+"\" Where \"Nickname\" = '" + PeopleForDexPatt251[i] + "'";
                 NpgsqlCommand checkThirdBoss = new NpgsqlCommand(queryStr3, cn);
                 int temp3 = Convert.ToInt32(checkThirdBoss.ExecuteScalar().ToString());
 
-                string queryStr4 = "Select \"Fourth Boss\" from  public.\"IBP\" Where \"Nickname\" = '" + PeopleForDexPatt251[i] + "'";
+                string queryStr4 = "Select \"Fourth Boss\" from  public.\""+dungeonName+"\" Where \"Nickname\" = '" + PeopleForDexPatt251[i] + "'";
                 NpgsqlCommand checkFourthBoss = new NpgsqlCommand(queryStr4, cn);
                 int temp4 = Convert.ToInt32(checkFourthBoss.ExecuteScalar().ToString());
 
-                string queryStr5 = "Select \"Fifth Boss\" from  public.\"IBP\" Where \"Nickname\" = '" + PeopleForDexPatt251[i] + "'";
+                string queryStr5 = "Select \"Fifth Boss\" from  public.\""+dungeonName+"\" Where \"Nickname\" = '" + PeopleForDexPatt251[i] + "'";
                 NpgsqlCommand checkFifthBoss = new NpgsqlCommand(queryStr5, cn);
                 int temp5 = Convert.ToInt32(checkFifthBoss.ExecuteScalar().ToString());
 
                 double totalFreq = (1 * temp) + (1.2 * temp2) + (1.4 * temp3) + (1.3 * temp4) + (1.1 * temp5);
-                double goldLog = 80 * Math.Log10((totalFreq + 80) / 80);
-                goldLog = Math.Round(goldLog, 2);
 
                 double statLog = Math.Log10(totalFreq + 1);
                 statLog = Math.Round(statLog, 2);
@@ -958,7 +944,7 @@ namespace Ignis_Freq
                 NpgsqlCommand Total_Log_DexPatt251 = new NpgsqlCommand(getTotal_Log_DexPatt251, cn);
                 decimal total_Log1 = Convert.ToDecimal(Total_Log_DexPatt251.ExecuteScalar().ToString());
 
-                string getUser_DexPatt251 = "SELECT \"dex/patt 251\" FROM public.\"IBP\" Where \"Nickname\" = '" + PeopleForDexPatt251[i] + "'";
+                string getUser_DexPatt251 = "SELECT \"dex/patt 251\" FROM public.\""+dungeonName+"\" Where \"Nickname\" = '" + PeopleForDexPatt251[i] + "'";
                 NpgsqlCommand user_DexPatt251 = new NpgsqlCommand(getUser_DexPatt251, cn);
                 int user_DexPatt251No = Convert.ToInt32(user_DexPatt251.ExecuteScalar().ToString());
 
@@ -973,7 +959,7 @@ namespace Ignis_Freq
                 }
                 
 
-                NpgsqlCommand update_UserDexPatt251_Log = new NpgsqlCommand("UPDATE public.\"IBP\" SET \"rank5\" = " + newRank_DexPatt251 + " Where \"Nickname\" ='" + PeopleForDexPatt251[i] + "' ");
+                NpgsqlCommand update_UserDexPatt251_Log = new NpgsqlCommand("UPDATE public.\""+dungeonName+"\" SET \"rank5\" = " + newRank_DexPatt251 + " Where \"Nickname\" ='" + PeopleForDexPatt251[i] + "' ");
                 update_UserDexPatt251_Log.Connection = cn;
                 update_UserDexPatt251_Log.ExecuteNonQuery();
                 cn.Close();
@@ -985,7 +971,7 @@ namespace Ignis_Freq
             List<String> PeopleForIntMatt251 = new List<String>();
             NpgsqlConnection cn = new NpgsqlConnection(ConfigurationManager.ConnectionStrings["connA"].ConnectionString);
             cn.Open();
-            string getPeopleForIntMatt = "SELECT public.\"IBP\".\"Nickname\" FROM public.\"IBP\", public.\"People\" Where \"Class\" in ('Mage', 'Warlock') AND public.\"People\".\"Nickname\" = public.\"IBP\".\"Nickname\"";
+            string getPeopleForIntMatt = "SELECT public.\""+dungeonName+"\".\"Nickname\" FROM public.\""+dungeonName+"\", public.\"People\" Where \"Class\" in ('Mage', 'Warlock') AND public.\"People\".\"Nickname\" = public.\""+dungeonName+"\".\"Nickname\"";
             using (NpgsqlCommand command = new NpgsqlCommand(getPeopleForIntMatt, cn))
             {
                 using (NpgsqlDataReader reader = command.ExecuteReader())
@@ -1000,29 +986,27 @@ namespace Ignis_Freq
             for (var i = 0; i < PeopleForIntMatt251.Count; i++)
             {
                 cn.Open();
-                string queryStr = "Select \"First Boss\" from  public.\"IBP\" Where \"Nickname\" = '" + PeopleForIntMatt251[i] + "'";
+                string queryStr = "Select \"First Boss\" from  public.\""+dungeonName+"\" Where \"Nickname\" = '" + PeopleForIntMatt251[i] + "'";
                 NpgsqlCommand checkFirstBoss = new NpgsqlCommand(queryStr, cn);
                 int temp = Convert.ToInt32(checkFirstBoss.ExecuteScalar().ToString());
 
-                string queryStr2 = "Select \"Second Boss\" from  public.\"IBP\" Where \"Nickname\" = '" + PeopleForIntMatt251[i] + "'";
+                string queryStr2 = "Select \"Second Boss\" from  public.\""+dungeonName+"\" Where \"Nickname\" = '" + PeopleForIntMatt251[i] + "'";
                 NpgsqlCommand checkSecongBoss = new NpgsqlCommand(queryStr2, cn);
                 int temp2 = Convert.ToInt32(checkSecongBoss.ExecuteScalar().ToString());
 
-                string queryStr3 = "Select \"Third Boss\" from  public.\"IBP\" Where \"Nickname\" = '" + PeopleForIntMatt251[i] + "'";
+                string queryStr3 = "Select \"Third Boss\" from  public.\""+dungeonName+"\" Where \"Nickname\" = '" + PeopleForIntMatt251[i] + "'";
                 NpgsqlCommand checkThirdBoss = new NpgsqlCommand(queryStr3, cn);
                 int temp3 = Convert.ToInt32(checkThirdBoss.ExecuteScalar().ToString());
 
-                string queryStr4 = "Select \"Fourth Boss\" from  public.\"IBP\" Where \"Nickname\" = '" + PeopleForIntMatt251[i] + "'";
+                string queryStr4 = "Select \"Fourth Boss\" from  public.\""+dungeonName+"\" Where \"Nickname\" = '" + PeopleForIntMatt251[i] + "'";
                 NpgsqlCommand checkFourthBoss = new NpgsqlCommand(queryStr4, cn);
                 int temp4 = Convert.ToInt32(checkFourthBoss.ExecuteScalar().ToString());
 
-                string queryStr5 = "Select \"Fifth Boss\" from  public.\"IBP\" Where \"Nickname\" = '" + PeopleForIntMatt251[i] + "'";
+                string queryStr5 = "Select \"Fifth Boss\" from  public.\""+dungeonName+"\" Where \"Nickname\" = '" + PeopleForIntMatt251[i] + "'";
                 NpgsqlCommand checkFifthBoss = new NpgsqlCommand(queryStr5, cn);
                 int temp5 = Convert.ToInt32(checkFifthBoss.ExecuteScalar().ToString());
 
                 double totalFreq = (1 * temp) + (1.2 * temp2) + (1.4 * temp3) + (1.3 * temp4) + (1.1 * temp5);
-                double goldLog = 80 * Math.Log10((totalFreq + 80) / 80);
-                goldLog = Math.Round(goldLog, 2);
 
                 double statLog = Math.Log10(totalFreq + 1);
                 statLog = Math.Round(statLog, 2);
@@ -1036,7 +1020,7 @@ namespace Ignis_Freq
                 NpgsqlCommand Total_Log_IntMatt251 = new NpgsqlCommand(getTotal_Log_IntMatt251, cn);
                 decimal total_Log1 = Convert.ToDecimal(Total_Log_IntMatt251.ExecuteScalar().ToString());
 
-                string getUser_IntMatt251 = "SELECT \"int/matt 251\" FROM public.\"IBP\" Where \"Nickname\" = '" + PeopleForIntMatt251[i] + "'";
+                string getUser_IntMatt251 = "SELECT \"int/matt 251\" FROM public.\""+dungeonName+"\" Where \"Nickname\" = '" + PeopleForIntMatt251[i] + "'";
                 NpgsqlCommand user_IntMatt251 = new NpgsqlCommand(getUser_IntMatt251, cn);
                 int user_IntMatt251No = Convert.ToInt32(user_IntMatt251.ExecuteScalar().ToString());
 
@@ -1051,7 +1035,7 @@ namespace Ignis_Freq
                 }
 
 
-                NpgsqlCommand update_UserIntMatt251_Log = new NpgsqlCommand("UPDATE public.\"IBP\" SET \"rank6\" = " + newRank_IntMatt251 + " Where \"Nickname\" ='" + PeopleForIntMatt251[i] + "' ");
+                NpgsqlCommand update_UserIntMatt251_Log = new NpgsqlCommand("UPDATE public.\""+dungeonName+"\" SET \"rank6\" = " + newRank_IntMatt251 + " Where \"Nickname\" ='" + PeopleForIntMatt251[i] + "' ");
                 update_UserIntMatt251_Log.Connection = cn;
                 update_UserIntMatt251_Log.ExecuteNonQuery();
                 cn.Close();
@@ -1063,7 +1047,7 @@ namespace Ignis_Freq
             List<String> PeopleForIntMatt = new List<String>();
             NpgsqlConnection cn = new NpgsqlConnection(ConfigurationManager.ConnectionStrings["connA"].ConnectionString);
             cn.Open();
-            string getPeopleForIntMatt = "SELECT public.\"IBP\".\"Nickname\" FROM public.\"IBP\", public.\"People\" Where \"Class\" in ('Mage', 'Warlock') AND public.\"People\".\"Nickname\" = public.\"IBP\".\"Nickname\"";
+            string getPeopleForIntMatt = "SELECT public.\""+dungeonName+"\".\"Nickname\" FROM public.\""+dungeonName+"\", public.\"People\" Where \"Class\" in ('Mage', 'Warlock') AND public.\"People\".\"Nickname\" = public.\""+dungeonName+"\".\"Nickname\"";
             using (NpgsqlCommand command = new NpgsqlCommand(getPeopleForIntMatt, cn))
             {
                 using (NpgsqlDataReader reader = command.ExecuteReader())
@@ -1078,29 +1062,27 @@ namespace Ignis_Freq
             for (var i = 0; i < PeopleForIntMatt.Count; i++)
             {
                 cn.Open();
-                string queryStr = "Select \"First Boss\" from  public.\"IBP\" Where \"Nickname\" = '" + PeopleForIntMatt[i] + "'";
+                string queryStr = "Select \"First Boss\" from  public.\""+dungeonName+"\" Where \"Nickname\" = '" + PeopleForIntMatt[i] + "'";
                 NpgsqlCommand checkFirstBoss = new NpgsqlCommand(queryStr, cn);
                 int temp = Convert.ToInt32(checkFirstBoss.ExecuteScalar().ToString());
 
-                string queryStr2 = "Select \"Second Boss\" from  public.\"IBP\" Where \"Nickname\" = '" + PeopleForIntMatt[i] + "'";
+                string queryStr2 = "Select \"Second Boss\" from  public.\""+dungeonName+"\" Where \"Nickname\" = '" + PeopleForIntMatt[i] + "'";
                 NpgsqlCommand checkSecongBoss = new NpgsqlCommand(queryStr2, cn);
                 int temp2 = Convert.ToInt32(checkSecongBoss.ExecuteScalar().ToString());
 
-                string queryStr3 = "Select \"Third Boss\" from  public.\"IBP\" Where \"Nickname\" = '" + PeopleForIntMatt[i] + "'";
+                string queryStr3 = "Select \"Third Boss\" from  public.\""+dungeonName+"\" Where \"Nickname\" = '" + PeopleForIntMatt[i] + "'";
                 NpgsqlCommand checkThirdBoss = new NpgsqlCommand(queryStr3, cn);
                 int temp3 = Convert.ToInt32(checkThirdBoss.ExecuteScalar().ToString());
 
-                string queryStr4 = "Select \"Fourth Boss\" from  public.\"IBP\" Where \"Nickname\" = '" + PeopleForIntMatt[i] + "'";
+                string queryStr4 = "Select \"Fourth Boss\" from  public.\""+dungeonName+"\" Where \"Nickname\" = '" + PeopleForIntMatt[i] + "'";
                 NpgsqlCommand checkFourthBoss = new NpgsqlCommand(queryStr4, cn);
                 int temp4 = Convert.ToInt32(checkFourthBoss.ExecuteScalar().ToString());
 
-                string queryStr5 = "Select \"Fifth Boss\" from  public.\"IBP\" Where \"Nickname\" = '" + PeopleForIntMatt[i] + "'";
+                string queryStr5 = "Select \"Fifth Boss\" from  public.\""+dungeonName+"\" Where \"Nickname\" = '" + PeopleForIntMatt[i] + "'";
                 NpgsqlCommand checkFifthBoss = new NpgsqlCommand(queryStr5, cn);
                 int temp5 = Convert.ToInt32(checkFifthBoss.ExecuteScalar().ToString());
 
                 double totalFreq = (1 * temp) + (1.2 * temp2) + (1.4 * temp3) + (1.3 * temp4) + (1.1 * temp5);
-                double goldLog = 80 * Math.Log10((totalFreq + 80) / 80);
-                goldLog = Math.Round(goldLog, 2);
 
                 double statLog = Math.Log10(totalFreq + 1);
                 statLog = Math.Round(statLog, 2);
@@ -1114,7 +1096,7 @@ namespace Ignis_Freq
                 NpgsqlCommand Total_Log_IntMatt = new NpgsqlCommand(getTotal_Log_IntMatt, cn);
                 decimal total_Log1 = Convert.ToDecimal(Total_Log_IntMatt.ExecuteScalar().ToString());
 
-                string getUser_IntMatt = "SELECT \"int/matt\" FROM public.\"IBP\" Where \"Nickname\" = '" + PeopleForIntMatt[i] + "'";
+                string getUser_IntMatt = "SELECT \"int/matt\" FROM public.\""+dungeonName+"\" Where \"Nickname\" = '" + PeopleForIntMatt[i] + "'";
                 NpgsqlCommand user_IntMatt = new NpgsqlCommand(getUser_IntMatt, cn);
                 int user_IntMattNo = Convert.ToInt32(user_IntMatt.ExecuteScalar().ToString());
 
@@ -1129,7 +1111,7 @@ namespace Ignis_Freq
                 }
                 
 
-                NpgsqlCommand update_UserIntMatt_Log = new NpgsqlCommand("UPDATE public.\"IBP\" SET \"rank7\" = " + newRank_IntMatt + " Where \"Nickname\" ='" + PeopleForIntMatt[i] + "' ");
+                NpgsqlCommand update_UserIntMatt_Log = new NpgsqlCommand("UPDATE public.\""+dungeonName+"\" SET \"rank7\" = " + newRank_IntMatt + " Where \"Nickname\" ='" + PeopleForIntMatt[i] + "' ");
                 update_UserIntMatt_Log.Connection = cn;
                 update_UserIntMatt_Log.ExecuteNonQuery();
                 cn.Close();
@@ -2797,7 +2779,7 @@ namespace Ignis_Freq
                         string[] Wardens = { "Adrik", "Etze", "Hilarion", "Marcindenmark","Nordia", "Tamire" };
                         string[] Champions = { "Suguru" };
                         string[] Rouges = { "Andrzej", "Andrzejm", "Blusia", "Blumaba", "Ferno", "Ferniacz", "Hennio", "Henio", "Seven", "Seventhsin", "Syla", "Vaxin" };
-                        string[] Scouts = { "Firuze", "Mijawian" };
+                        string[] Scouts = { "Firuze", "Mijawian", "Shaley"};
                         string[] Warlocks = { "Hexu", "Hexen", "Hexenmeister", "Czarnuszka" };
                         string[] Mages = { "Deru", "Dersuv", "Hola", "Holiusz", "Keit", "Keithelor", "Chaos", "Lunacy", "Lunek", "Owsiak", "Owsiakus", "Prokto", "Proktolog", "Scari", "Stormmen" };
                         #endregion
@@ -2808,71 +2790,71 @@ namespace Ignis_Freq
                         {
                             if (FirstMamber.Contains(x))
                             {
-                                Member1C = "#ffff80";
+                                Member1C = "#ffffA1";
                             }
                             else if (SecondMember.Contains(x))
                             {
-                                Member2C = "#ffff80";
+                                Member2C = "#ffffA1";
                             }
                             else if (ThirdMember.Contains(x))
                             {
-                                Member3C = "#ffff80";
+                                Member3C = "#ffffA1";
                             }
                             else if (FourthMember.Contains(x))
                             {
-                                Member4C = "#ffff80";
+                                Member4C = "#ffffA1";
                             }
                             else if (FifthMember.Contains(x))
                             {
-                                Member5C = "#ffff80";
+                                Member5C = "#ffffA1";
                             }
                             else if (SixthMember.Contains(x))
                             {
-                                Member6C = "#ffff80";
+                                Member6C = "#ffffA1";
                             }
                             else if (SeventhMember.Contains(x))
                             {
-                                Member7C = "#ffff80";
+                                Member7C = "#ffffA1";
                             }
                             else if (EightMember.Contains(x))
                             {
-                                Member8C = "#ffff80";
+                                Member8C = "#ffffA1";
                             }
                             else if (NinthMember.Contains(x))
                             {
-                                Member9C = "#ffff80";
+                                Member9C = "#ffffA1";
                             }
                             else if (TenthMember.Contains(x))
                             {
-                                Member10C = "#ffff80";
+                                Member10C = "#ffffA1";
                             }
                             else if (EleventhMember.Contains(x))
                             {
-                                Member11C = "#ffff80";
+                                Member11C = "#ffffA1";
                             }
                             else if (TwelfthMember.Contains(x))
                             {
-                                Member12C = "#ffff80";
+                                Member12C = "#ffffA1";
                             }
                             else if (FirstReserve.Contains(x))
                             {
-                                Member1RC = "#ffff80";
+                                Member1RC = "#ffffA1";
                             }
                             else if (SecondReserve.Contains(x))
                             {
-                                Member2RC = "#ffff80";
+                                Member2RC = "#ffffA1";
                             }
                             else if (ThirdReserve.Contains(x))
                             {
-                                Member3RC = "#ffff80";
+                                Member3RC = "#ffffA1";
                             }
                             else if (FourthReserve.Contains(x))
                             {
-                                Member4RC = "#ffff80";
+                                Member4RC = "#ffffA1";
                             }
                             else if (FifthReserve.Contains(x))
                             {
-                                Member5RC = "#ffff80";
+                                Member5RC = "#ffffA1";
                             }
 
                         }
@@ -3173,71 +3155,71 @@ namespace Ignis_Freq
                         {
                             if (FirstMamber.Contains(x))
                             {
-                                Member1C = "#80aaff";
+                                Member1C = "#A1aaff";
                             }
                             else if (SecondMember.Contains(x))
                             {
-                                Member2C = "#80aaff";
+                                Member2C = "#A1aaff";
                             }
                             else if (ThirdMember.Contains(x))
                             {
-                                Member3C = "#80aaff";
+                                Member3C = "#A1aaff";
                             }
                             else if (FourthMember.Contains(x))
                             {
-                                Member4C = "#80aaff";
+                                Member4C = "#A1aaff";
                             }
                             else if (FifthMember.Contains(x))
                             {
-                                Member5C = "#80aaff";
+                                Member5C = "#A1aaff";
                             }
                             else if (SixthMember.Contains(x))
                             {
-                                Member6C = "#80aaff";
+                                Member6C = "#A1aaff";
                             }
                             else if (SeventhMember.Contains(x))
                             {
-                                Member7C = "#80aaff";
+                                Member7C = "#A1aaff";
                             }
                             else if (EightMember.Contains(x))
                             {
-                                Member8C = "#80aaff";
+                                Member8C = "#A1aaff";
                             }
                             else if (NinthMember.Contains(x))
                             {
-                                Member9C = "#80aaff";
+                                Member9C = "#A1aaff";
                             }
                             else if (TenthMember.Contains(x))
                             {
-                                Member10C = "#80aaff";
+                                Member10C = "#A1aaff";
                             }
                             else if (EleventhMember.Contains(x))
                             {
-                                Member11C = "#80aaff";
+                                Member11C = "#A1aaff";
                             }
                             else if (TwelfthMember.Contains(x))
                             {
-                                Member12C = "#80aaff";
+                                Member12C = "#A1aaff";
                             }
                             else if (FirstReserve.Contains(x))
                             {
-                                Member1RC = "#80aaff";
+                                Member1RC = "#A1aaff";
                             }
                             else if (SecondReserve.Contains(x))
                             {
-                                Member2RC = "#80aaff";
+                                Member2RC = "#A1aaff";
                             }
                             else if (ThirdReserve.Contains(x))
                             {
-                                Member3RC = "#80aaff";
+                                Member3RC = "#A1aaff";
                             }
                             else if (FourthReserve.Contains(x))
                             {
-                                Member4RC = "#80aaff";
+                                Member4RC = "#A1aaff";
                             }
                             else if (FifthReserve.Contains(x))
                             {
-                                Member5RC = "#80aaff";
+                                Member5RC = "#A1aaff";
                             }
 
                         }
@@ -3974,11 +3956,11 @@ namespace Ignis_Freq
                                 if (FirstBossLists[i].ToString() == "1")
                                 {
                                     cn.Open();
-                                    string queryStr = "Select \"First Boss\" from  public.\"IBP\" Where \"Nickname\" = '" + newList[i] + "'";
+                                    string queryStr = "Select \"First Boss\" from  public.\""+dungeonName+"\" Where \"Nickname\" = '" + newList[i] + "'";
                                     NpgsqlCommand checkFirstBoss = new NpgsqlCommand(queryStr, cn);
                                     int temp = Convert.ToInt32(checkFirstBoss.ExecuteScalar().ToString());
                                     temp = temp + 1;
-                                    NpgsqlCommand update_FirstBoss = new NpgsqlCommand("UPDATE public.\"IBP\" SET \"First Boss\" = " + temp + " Where \"Nickname\" ='" + newList[i] + "' ");
+                                    NpgsqlCommand update_FirstBoss = new NpgsqlCommand("UPDATE public.\""+dungeonName+"\" SET \"First Boss\" = " + temp + " Where \"Nickname\" ='" + newList[i] + "' ");
                                     update_FirstBoss.Connection = cn;
                                     update_FirstBoss.ExecuteNonQuery();
                                     cn.Close();
@@ -3988,11 +3970,11 @@ namespace Ignis_Freq
                                 if (SecondBossLists[i].ToString() == "1")
                                 {
                                     cn.Open();
-                                    string queryStr2 = "Select \"Second Boss\" from  public.\"IBP\" Where \"Nickname\" = '" + newList[i] + "'";
+                                    string queryStr2 = "Select \"Second Boss\" from  public.\""+dungeonName+"\" Where \"Nickname\" = '" + newList[i] + "'";
                                     NpgsqlCommand checkSecongBoss = new NpgsqlCommand(queryStr2, cn);
                                     int temp2 = Convert.ToInt32(checkSecongBoss.ExecuteScalar().ToString());
                                     temp2 = temp2 + 1;
-                                    NpgsqlCommand update_SecondBoss = new NpgsqlCommand("UPDATE public.\"IBP\" SET \"Second Boss\" = " + temp2 + " Where \"Nickname\" ='" + newList[i] + "' ");
+                                    NpgsqlCommand update_SecondBoss = new NpgsqlCommand("UPDATE public.\""+dungeonName+"\" SET \"Second Boss\" = " + temp2 + " Where \"Nickname\" ='" + newList[i] + "' ");
                                     update_SecondBoss.Connection = cn;
                                     update_SecondBoss.ExecuteNonQuery();
                                     cn.Close();
@@ -4000,11 +3982,11 @@ namespace Ignis_Freq
                                 if (ThirdBossLists[i].ToString() == "1")
                                 {
                                     cn.Open();
-                                    string queryStr3 = "Select \"Third Boss\" from  public.\"IBP\" Where \"Nickname\" = '" + newList[i] + "'";
+                                    string queryStr3 = "Select \"Third Boss\" from  public.\""+dungeonName+"\" Where \"Nickname\" = '" + newList[i] + "'";
                                     NpgsqlCommand checkThirdBoss = new NpgsqlCommand(queryStr3, cn);
                                     int temp3 = Convert.ToInt32(checkThirdBoss.ExecuteScalar().ToString());
                                     temp3 = temp3 + 1;
-                                    NpgsqlCommand update_thirdBoss = new NpgsqlCommand("UPDATE public.\"IBP\" SET \"Third Boss\" = " + temp3 + " Where \"Nickname\" ='" + newList[i] + "' ");
+                                    NpgsqlCommand update_thirdBoss = new NpgsqlCommand("UPDATE public.\""+dungeonName+"\" SET \"Third Boss\" = " + temp3 + " Where \"Nickname\" ='" + newList[i] + "' ");
                                     update_thirdBoss.Connection = cn;
                                     update_thirdBoss.ExecuteNonQuery();
                                     cn.Close();
@@ -4012,11 +3994,11 @@ namespace Ignis_Freq
                                 if (FourthBossLists[i].ToString() == "1")
                                 {
                                     cn.Open();
-                                    string queryStr4 = "Select \"Fourth Boss\" from  public.\"IBP\" Where \"Nickname\" = '" + newList[i] + "'";
+                                    string queryStr4 = "Select \"Fourth Boss\" from  public.\""+dungeonName+"\" Where \"Nickname\" = '" + newList[i] + "'";
                                     NpgsqlCommand checkFourthBoss = new NpgsqlCommand(queryStr4, cn);
                                     int temp4 = Convert.ToInt32(checkFourthBoss.ExecuteScalar().ToString());
                                     temp4 = temp4 + 1;
-                                    NpgsqlCommand update_FourthBoss = new NpgsqlCommand("UPDATE public.\"IBP\" SET \"Fourth Boss\" = " + temp4 + " Where \"Nickname\" ='" + newList[i] + "' ");
+                                    NpgsqlCommand update_FourthBoss = new NpgsqlCommand("UPDATE public.\""+dungeonName+"\" SET \"Fourth Boss\" = " + temp4 + " Where \"Nickname\" ='" + newList[i] + "' ");
                                     update_FourthBoss.Connection = cn;
                                     update_FourthBoss.ExecuteNonQuery();
                                     cn.Close();
@@ -4024,11 +4006,11 @@ namespace Ignis_Freq
                                 if (FifthBossLists[i].ToString() == "1")
                                 {
                                     cn.Open();
-                                    string queryStr5 = "Select \"Fifth Boss\" from  public.\"IBP\" Where \"Nickname\" = '" + newList[i] + "'";
+                                    string queryStr5 = "Select \"Fifth Boss\" from  public.\""+dungeonName+"\" Where \"Nickname\" = '" + newList[i] + "'";
                                     NpgsqlCommand checkFifthBoss = new NpgsqlCommand(queryStr5, cn);
                                     int temp5 = Convert.ToInt32(checkFifthBoss.ExecuteScalar().ToString());
                                     temp5 = temp5 + 1;
-                                    NpgsqlCommand update_FifthBoss = new NpgsqlCommand("UPDATE public.\"IBP\" SET \"Fifth Boss\" = " + temp5 + " Where \"Nickname\" ='" + newList[i] + "' ");
+                                    NpgsqlCommand update_FifthBoss = new NpgsqlCommand("UPDATE public.\""+dungeonName+"\" SET \"Fifth Boss\" = " + temp5 + " Where \"Nickname\" ='" + newList[i] + "' ");
                                     update_FifthBoss.Connection = cn;
                                     update_FifthBoss.ExecuteNonQuery();
                                     cn.Close();
@@ -4050,11 +4032,11 @@ namespace Ignis_Freq
                                     InsertDrop.ExecuteNonQuery();
 
                                     
-                                    string queryStr = "Select \""+ DropItem1 + "\" from  public.\"IBP\" Where \"Nickname\" = '" + ItemReceiver1 + "'";
+                                    string queryStr = "Select \""+ DropItem1 + "\" from  public.\""+dungeonName+"\" Where \"Nickname\" = '" + ItemReceiver1 + "'";
                                     NpgsqlCommand checkFirstBoss = new NpgsqlCommand(queryStr, cn);
                                     int temp = Convert.ToInt32(checkFirstBoss.ExecuteScalar().ToString());
                                     temp = temp + 1;
-                                    NpgsqlCommand update_Stat = new NpgsqlCommand("UPDATE public.\"IBP\" SET \""+ DropItem1 + "\" = " + temp + " Where \"Nickname\" ='" + ItemReceiver1 + "' ");
+                                    NpgsqlCommand update_Stat = new NpgsqlCommand("UPDATE public.\""+dungeonName+"\" SET \""+ DropItem1 + "\" = " + temp + " Where \"Nickname\" ='" + ItemReceiver1 + "' ");
                                     update_Stat.Connection = cn;
                                     update_Stat.ExecuteNonQuery();
                                     cn.Close();
@@ -4085,11 +4067,11 @@ namespace Ignis_Freq
                                     InsertDrop.Connection = cn;
                                     InsertDrop.ExecuteNonQuery();
 
-                                    string queryStr = "Select \"" + DropItem2 + "\" from  public.\"IBP\" Where \"Nickname\" = '" + ItemReceiver2 + "'";
+                                    string queryStr = "Select \"" + DropItem2 + "\" from  public.\""+dungeonName+"\" Where \"Nickname\" = '" + ItemReceiver2 + "'";
                                     NpgsqlCommand checkFirstBoss = new NpgsqlCommand(queryStr, cn);
                                     int temp = Convert.ToInt32(checkFirstBoss.ExecuteScalar().ToString());
                                     temp = temp + 1;
-                                    NpgsqlCommand update_Stat = new NpgsqlCommand("UPDATE public.\"IBP\" SET \"" + DropItem2 + "\" = " + temp + " Where \"Nickname\" ='" + ItemReceiver2 + "' ");
+                                    NpgsqlCommand update_Stat = new NpgsqlCommand("UPDATE public.\""+dungeonName+"\" SET \"" + DropItem2 + "\" = " + temp + " Where \"Nickname\" ='" + ItemReceiver2 + "' ");
                                     update_Stat.Connection = cn;
                                     update_Stat.ExecuteNonQuery();
                                     cn.Close();
@@ -4119,11 +4101,11 @@ namespace Ignis_Freq
                                     NpgsqlCommand InsertDrop = new NpgsqlCommand("Insert into public.\"Items\" Values('" + DropType3 + "', '" + DropItem3 + "','" + ItemReceiver3 + "')");
                                     InsertDrop.Connection = cn;
                                     InsertDrop.ExecuteNonQuery();
-                                    string queryStr = "Select \"" + DropItem3 + "\" from  public.\"IBP\" Where \"Nickname\" = '" + ItemReceiver3 + "'";
+                                    string queryStr = "Select \"" + DropItem3 + "\" from  public.\""+dungeonName+"\" Where \"Nickname\" = '" + ItemReceiver3 + "'";
                                     NpgsqlCommand checkFirstBoss = new NpgsqlCommand(queryStr, cn);
                                     int temp = Convert.ToInt32(checkFirstBoss.ExecuteScalar().ToString());
                                     temp = temp + 1;
-                                    NpgsqlCommand update_Stat = new NpgsqlCommand("UPDATE public.\"IBP\" SET \"" + DropItem3 + "\" = " + temp + " Where \"Nickname\" ='" + ItemReceiver3 + "' ");
+                                    NpgsqlCommand update_Stat = new NpgsqlCommand("UPDATE public.\""+dungeonName+"\" SET \"" + DropItem3 + "\" = " + temp + " Where \"Nickname\" ='" + ItemReceiver3 + "' ");
                                     update_Stat.Connection = cn;
                                     update_Stat.ExecuteNonQuery();
                                     cn.Close();
@@ -4153,11 +4135,11 @@ namespace Ignis_Freq
                                     NpgsqlCommand InsertDrop = new NpgsqlCommand("Insert into public.\"Items\" Values('" + DropType4 + "', '" + DropItem4 + "','" + ItemReceiver4 + "')");
                                     InsertDrop.Connection = cn;
                                     InsertDrop.ExecuteNonQuery();
-                                    string queryStr = "Select \"" + DropItem4 + "\" from  public.\"IBP\" Where \"Nickname\" = '" + ItemReceiver4 + "'";
+                                    string queryStr = "Select \"" + DropItem4 + "\" from  public.\""+dungeonName+"\" Where \"Nickname\" = '" + ItemReceiver4 + "'";
                                     NpgsqlCommand checkFirstBoss = new NpgsqlCommand(queryStr, cn);
                                     int temp = Convert.ToInt32(checkFirstBoss.ExecuteScalar().ToString());
                                     temp = temp + 1;
-                                    NpgsqlCommand update_Stat = new NpgsqlCommand("UPDATE public.\"IBP\" SET \"" + DropItem4 + "\" = " + temp + " Where \"Nickname\" ='" + ItemReceiver4 + "' ");
+                                    NpgsqlCommand update_Stat = new NpgsqlCommand("UPDATE public.\""+dungeonName+"\" SET \"" + DropItem4 + "\" = " + temp + " Where \"Nickname\" ='" + ItemReceiver4 + "' ");
                                     update_Stat.Connection = cn;
                                     update_Stat.ExecuteNonQuery();
                                     cn.Close();
@@ -4187,11 +4169,11 @@ namespace Ignis_Freq
                                     NpgsqlCommand InsertDrop = new NpgsqlCommand("Insert into public.\"Items\" Values('" + DropType5 + "', '" + DropItem5 + "','" + ItemReceiver5 + "')");
                                     InsertDrop.Connection = cn;
                                     InsertDrop.ExecuteNonQuery();
-                                    string queryStr = "Select \"" + DropItem5 + "\" from  public.\"IBP\" Where \"Nickname\" = '" + ItemReceiver5 + "'";
+                                    string queryStr = "Select \"" + DropItem5 + "\" from  public.\""+dungeonName+"\" Where \"Nickname\" = '" + ItemReceiver5 + "'";
                                     NpgsqlCommand checkFirstBoss = new NpgsqlCommand(queryStr, cn);
                                     int temp = Convert.ToInt32(checkFirstBoss.ExecuteScalar().ToString());
                                     temp = temp + 1;
-                                    NpgsqlCommand update_Stat = new NpgsqlCommand("UPDATE public.\"IBP\" SET \"" + DropItem5 + "\" = " + temp + " Where \"Nickname\" ='" + ItemReceiver5 + "' ");
+                                    NpgsqlCommand update_Stat = new NpgsqlCommand("UPDATE public.\""+dungeonName+"\" SET \"" + DropItem5 + "\" = " + temp + " Where \"Nickname\" ='" + ItemReceiver5 + "' ");
                                     update_Stat.Connection = cn;
                                     update_Stat.ExecuteNonQuery();
                                     cn.Close();
@@ -4221,11 +4203,11 @@ namespace Ignis_Freq
                                     NpgsqlCommand InsertDrop = new NpgsqlCommand("Insert into public.\"Items\" Values('" + DropType6 + "', '" + DropItem6 + "','" + ItemReceiver6 + "')");
                                     InsertDrop.Connection = cn;
                                     InsertDrop.ExecuteNonQuery();
-                                    string queryStr = "Select \"" + DropItem6 + "\" from  public.\"IBP\" Where \"Nickname\" = '" + ItemReceiver6 + "'";
+                                    string queryStr = "Select \"" + DropItem6 + "\" from  public.\""+dungeonName+"\" Where \"Nickname\" = '" + ItemReceiver6 + "'";
                                     NpgsqlCommand checkFirstBoss = new NpgsqlCommand(queryStr, cn);
                                     int temp = Convert.ToInt32(checkFirstBoss.ExecuteScalar().ToString());
                                     temp = temp + 1;
-                                    NpgsqlCommand update_Stat = new NpgsqlCommand("UPDATE public.\"IBP\" SET \"" + DropItem6 + "\" = " + temp + " Where \"Nickname\" ='" + ItemReceiver6 + "' ");
+                                    NpgsqlCommand update_Stat = new NpgsqlCommand("UPDATE public.\""+dungeonName+"\" SET \"" + DropItem6 + "\" = " + temp + " Where \"Nickname\" ='" + ItemReceiver6 + "' ");
                                     update_Stat.Connection = cn;
                                     update_Stat.ExecuteNonQuery();
                                     cn.Close();
@@ -4255,11 +4237,11 @@ namespace Ignis_Freq
                                     NpgsqlCommand InsertDrop = new NpgsqlCommand("Insert into public.\"Items\" Values('" + DropType7 + "', '" + DropItem7 + "','" + ItemReceiver7 + "')");
                                     InsertDrop.Connection = cn;
                                     InsertDrop.ExecuteNonQuery();
-                                    string queryStr = "Select \"" + DropItem7 + "\" from  public.\"IBP\" Where \"Nickname\" = '" + ItemReceiver7 + "'";
+                                    string queryStr = "Select \"" + DropItem7 + "\" from  public.\""+dungeonName+"\" Where \"Nickname\" = '" + ItemReceiver7 + "'";
                                     NpgsqlCommand checkFirstBoss = new NpgsqlCommand(queryStr, cn);
                                     int temp = Convert.ToInt32(checkFirstBoss.ExecuteScalar().ToString());
                                     temp = temp + 1;
-                                    NpgsqlCommand update_Stat = new NpgsqlCommand("UPDATE public.\"IBP\" SET \"" + DropItem7 + "\" = " + temp + " Where \"Nickname\" ='" + ItemReceiver7 + "' ");
+                                    NpgsqlCommand update_Stat = new NpgsqlCommand("UPDATE public.\""+dungeonName+"\" SET \"" + DropItem7 + "\" = " + temp + " Where \"Nickname\" ='" + ItemReceiver7 + "' ");
                                     update_Stat.Connection = cn;
                                     update_Stat.ExecuteNonQuery();
                                     cn.Close();
@@ -4289,11 +4271,11 @@ namespace Ignis_Freq
                                     NpgsqlCommand InsertDrop = new NpgsqlCommand("Insert into public.\"Items\" Values('" + DropType8 + "', '" + DropItem8 + "','" + ItemReceiver8 + "')");
                                     InsertDrop.Connection = cn;
                                     InsertDrop.ExecuteNonQuery();
-                                    string queryStr = "Select \"" + DropItem8 + "\" from  public.\"IBP\" Where \"Nickname\" = '" + ItemReceiver8 + "'";
+                                    string queryStr = "Select \"" + DropItem8 + "\" from  public.\""+dungeonName+"\" Where \"Nickname\" = '" + ItemReceiver8 + "'";
                                     NpgsqlCommand checkFirstBoss = new NpgsqlCommand(queryStr, cn);
                                     int temp = Convert.ToInt32(checkFirstBoss.ExecuteScalar().ToString());
                                     temp = temp + 1;
-                                    NpgsqlCommand update_Stat = new NpgsqlCommand("UPDATE public.\"IBP\" SET \"" + DropItem8 + "\" = " + temp + " Where \"Nickname\" ='" + ItemReceiver8 + "' ");
+                                    NpgsqlCommand update_Stat = new NpgsqlCommand("UPDATE public.\""+dungeonName+"\" SET \"" + DropItem8 + "\" = " + temp + " Where \"Nickname\" ='" + ItemReceiver8 + "' ");
                                     update_Stat.Connection = cn;
                                     update_Stat.ExecuteNonQuery();
                                     cn.Close();
@@ -4323,11 +4305,11 @@ namespace Ignis_Freq
                                     NpgsqlCommand InsertDrop = new NpgsqlCommand("Insert into public.\"Items\" Values('" + DropType9 + "', '" + DropItem9 + "','" + ItemReceiver9 + "')");
                                     InsertDrop.Connection = cn;
                                     InsertDrop.ExecuteNonQuery();
-                                    string queryStr = "Select \"" + DropItem9 + "\" from  public.\"IBP\" Where \"Nickname\" = '" + ItemReceiver9 + "'";
+                                    string queryStr = "Select \"" + DropItem9 + "\" from  public.\""+dungeonName+"\" Where \"Nickname\" = '" + ItemReceiver9 + "'";
                                     NpgsqlCommand checkFirstBoss = new NpgsqlCommand(queryStr, cn);
                                     int temp = Convert.ToInt32(checkFirstBoss.ExecuteScalar().ToString());
                                     temp = temp + 1;
-                                    NpgsqlCommand update_Stat = new NpgsqlCommand("UPDATE public.\"IBP\" SET \"" + DropItem9 + "\" = " + temp + " Where \"Nickname\" ='" + ItemReceiver9 + "' ");
+                                    NpgsqlCommand update_Stat = new NpgsqlCommand("UPDATE public.\""+dungeonName+"\" SET \"" + DropItem9 + "\" = " + temp + " Where \"Nickname\" ='" + ItemReceiver9 + "' ");
                                     update_Stat.Connection = cn;
                                     update_Stat.ExecuteNonQuery();
                                     cn.Close();
@@ -5951,5 +5933,22 @@ namespace Ignis_Freq
         {
             e.Handled = !char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar);
         }
+
+        private void iBPToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            dungeonName = "IBP";
+            updateCoquinn();
+            updateTotalFreq();
+            update_TotalNoOfStats();
+            UpdateWSP();
+            Calculate_StaHp251_Rank();
+            Calculate_StaWis251_Rank();
+            Calculate_StaPatt251_Rank();
+            Calculate_StrPatt251_Rank();
+            Calculate_DexPatt251_Rank();
+            Calculate_IntMatt251_Rank();
+            Calculate_IntMatt_Rank();
+        }
+
     }
 }

@@ -36,6 +36,8 @@
             this.closeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.howItWorksToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.dungeonToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.iBPToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -234,6 +236,7 @@
             this.errorProvider2 = new System.Windows.Forms.ErrorProvider(this.components);
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.imageList2 = new System.Windows.Forms.ImageList(this.components);
+            this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider2)).BeginInit();
@@ -243,7 +246,8 @@
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.menuToolStripMenuItem,
-            this.helpToolStripMenuItem});
+            this.helpToolStripMenuItem,
+            this.dungeonToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(976, 24);
@@ -287,6 +291,21 @@
             this.howItWorksToolStripMenuItem.Size = new System.Drawing.Size(145, 22);
             this.howItWorksToolStripMenuItem.Text = "How It Works";
             this.howItWorksToolStripMenuItem.Click += new System.EventHandler(this.howItWorksToolStripMenuItem_Click_1);
+            // 
+            // dungeonToolStripMenuItem
+            // 
+            this.dungeonToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.iBPToolStripMenuItem});
+            this.dungeonToolStripMenuItem.Name = "dungeonToolStripMenuItem";
+            this.dungeonToolStripMenuItem.Size = new System.Drawing.Size(68, 20);
+            this.dungeonToolStripMenuItem.Text = "Dungeon";
+            // 
+            // iBPToolStripMenuItem
+            // 
+            this.iBPToolStripMenuItem.Name = "iBPToolStripMenuItem";
+            this.iBPToolStripMenuItem.Size = new System.Drawing.Size(91, 22);
+            this.iBPToolStripMenuItem.Text = "IBP";
+            this.iBPToolStripMenuItem.Click += new System.EventHandler(this.iBPToolStripMenuItem_Click);
             // 
             // label1
             // 
@@ -3940,12 +3959,21 @@
             this.imageList2.ImageSize = new System.Drawing.Size(16, 16);
             this.imageList2.TransparentColor = System.Drawing.Color.Transparent;
             // 
+            // toolStrip1
+            // 
+            this.toolStrip1.Location = new System.Drawing.Point(0, 24);
+            this.toolStrip1.Name = "toolStrip1";
+            this.toolStrip1.Size = new System.Drawing.Size(976, 25);
+            this.toolStrip1.TabIndex = 196;
+            this.toolStrip1.Text = "toolStrip1";
+            // 
             // Ignis_Freq
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.ClientSize = new System.Drawing.Size(976, 546);
+            this.Controls.Add(this.toolStrip1);
             this.Controls.Add(this.lbl_Receiver);
             this.Controls.Add(this.lbl_Dura);
             this.Controls.Add(this.lbl_DropName);
@@ -4358,6 +4386,9 @@
         private System.Windows.Forms.ImageList imageList1;
         private System.Windows.Forms.ImageList imageList2;
         private System.Windows.Forms.TextBox txt_Member4;
+        private System.Windows.Forms.ToolStrip toolStrip1;
+        private System.Windows.Forms.ToolStripMenuItem dungeonToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem iBPToolStripMenuItem;
     }
 }
 
